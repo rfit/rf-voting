@@ -8,6 +8,7 @@ const cors = require('koa-cors')
 const handlers = require('./handlers');
 
 const app = koa()
+
 const API_PORT = 3001
 
 // Setup middlewares!
@@ -20,3 +21,4 @@ app.use(route.get('/', handlers.indexHandler))
 app.listen(API_PORT, () => {
   console.log(`Started listening on ${API_PORT}`)
 })
+
