@@ -9,11 +9,18 @@ const cors = require('koa-cors')
 const views = require('koa-views')
 const serve = require('koa-static')
 const path = require('path')
+const mongoose = require('mongoose')
+const Models = require('./models')
 
 // Handlers
 const frontendHandlers = require('./frontend.handlers')
 const apiHandlers = require('./api.handlers')
 
+// Setup the databse
+mongoose.connect('mongodb://localhost/voting')
+const models = Models()
+
+// setup the app
 const app = koa()
 const PORT = 3000
 
@@ -25,6 +32,10 @@ app.use(views(path.join(__dirname, '../views'), {
     html: 'nunjucks'
   }
 }))
+app.use(function * (next) {
+  this.models = models
+  yield next
+})
 
 // Define frontend routes
 app.use(route.get('/', frontendHandlers.indexHandler))

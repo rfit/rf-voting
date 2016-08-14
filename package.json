@@ -26,6 +26,7 @@
     "koa-route": "^2.4.2",
     "koa-static": "^2.0.0",
     "koa-views": "^4.1.0",
+    "mongoose": "^4.5.8",
     "nunjucks": "^2.4.2",
     "react": "^15.3.0",
     "react-dom": "^15.3.0"
