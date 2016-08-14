@@ -8,5 +8,5 @@ A simple voting system created for RF.
 git clone https://github.com/rfit/rf-voting
 cd rf-voting
 npm i
-npm start
+npm run dev
 ```

@@ -5,6 +5,7 @@ node_modules
 
 # production
 build
+public
 
 # misc
 .DS_Store
