@@ -1,0 +1,27 @@
+{
+  "name": "rf-voting",
+  "version": "1.0.0",
+  "description": "A simple voting system for Roskilde festival.",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server/index.js",
+    "start": "nf start -p 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfit/rf-voting.git"
+  },
+  "author": "RFIT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rfit/rf-voting/issues"
+  },
+  "homepage": "https://github.com/rfit/rf-voting#readme",
+  "dependencies": {
+    "foreman": "^1.4.1",
+    "koa": "^1.2.1",
+    "koa-cors": "0.0.16",
+    "koa-route": "^2.4.2"
+  }
+}
