@@ -10,4 +10,3 @@ cd rf-voting
 npm i
 npm start
 ```
-
