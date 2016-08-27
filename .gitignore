@@ -7,6 +7,9 @@ node_modules
 build
 public
 
+# mongo db volume
+db
+
 # misc
 .DS_Store
 npm-debug.log

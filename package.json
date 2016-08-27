@@ -8,7 +8,10 @@
     "build": "webpack -p",
     "dev": "parallelshell \"nodemon src/server/index.js\" \"webpack -d --watch\"",
     "lint": "eslint src/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:start": "docker run -d -p 27017:27017 -v $PWD/db/data --name rfvotingdb mongo",
+    "db:stop": "docker stop rfvotingdb",
+    "db:rm": "docker rm rfvotingdb"
   },
   "repository": {
     "type": "git",
