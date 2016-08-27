@@ -11,8 +11,8 @@ export class Poll extends Component {
     }
   }
 
-  handleClick (number) {
-    const index = this.state.selectedItems.indexOf(number)
+  handleClick (id) {
+    const index = this.state.selectedItems.indexOf(id)
     if (index >= 0) {
       // create new array
       let newArray = this.state.selectedItems.slice(0, index)
@@ -23,7 +23,7 @@ export class Poll extends Component {
       })
     } else if (index === -1) {
       // create new array
-      const newArray = this.state.selectedItems.concat(number)
+      const newArray = this.state.selectedItems.concat(id)
       // set new state
       this.setState({
         selectedItems: newArray
@@ -40,7 +40,7 @@ export class Poll extends Component {
         {
           this.props.items.map((item, key) => {
             let selected = false
-            if (this.state.selectedItems.indexOf(key) > -1) {
+            if (this.state.selectedItems.indexOf(item.id) > -1) {
               selected = true
             }
 
@@ -49,7 +49,7 @@ export class Poll extends Component {
                 <PollItem
                   name={item.name}
                   key={key}
-                  number={key}
+                  id={item.id}
                   onButtonClick={(e) => this.handleClick(e)} // eslint-disable-line
                   selected={selected} />
                 <br />
