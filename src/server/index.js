@@ -17,7 +17,8 @@ const frontendHandlers = require('./frontend.handlers')
 const apiHandlers = require('./api.handlers')
 
 // Setup the databse
-mongoose.connect('mongodb://localhost/voting')
+const mongoUri = process.env.MONGO_URI || 'mongodb://localhost/voting'
+mongoose.connect(mongoUri)
 const models = Models()
 
 // setup the app
