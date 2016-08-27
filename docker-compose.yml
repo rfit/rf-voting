@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/srv
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo/voting
+    command: npm run dev
+  mongo:
+    image: tutum/mongodb
+    
