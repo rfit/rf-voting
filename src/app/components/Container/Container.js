@@ -3,6 +3,8 @@ import React, {Component, PropTypes} from 'react'
 import {Poll} from '../Poll/Poll.component'
 import {PostPoll} from '../PostPoll/PostPoll.component'
 
+import {submitHandler} from '../../utils'
+
 export class Container extends Component {
   constructor () {
     super()
@@ -16,6 +18,9 @@ export class Container extends Component {
 
   handleSubmit () {
     if (this.state.selectedItems.length === 3) {
+      // submit to backend
+      submitHandler(this.state.selectedItems)
+
       this.setState({
         view: 1
       })

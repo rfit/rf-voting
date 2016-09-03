@@ -8,6 +8,7 @@ const route = require('koa-route')
 const cors = require('koa-cors')
 const views = require('koa-views')
 const serve = require('koa-static')
+const bodyParser = require('koa-bodyparser')
 const path = require('path')
 const mongoose = require('mongoose')
 const Models = require('./models')
@@ -27,6 +28,7 @@ const PORT = 3000
 
 // Setup middlewares!
 app.use(cors())
+app.use(bodyParser())
 app.use(serve(path.join(__dirname, '../../public'), {defer: true}))
 app.use(views(path.join(__dirname, '../views'), {
   map: {
@@ -43,6 +45,7 @@ app.use(route.get('/', frontendHandlers.indexHandler))
 
 // Define API routes
 app.use(route.get('/api/', apiHandlers.indexHandler))
+app.use(route.post('/api/submit', apiHandlers.submitHandler))
 
 // Boot up the server!
 app.listen(PORT, () => {
