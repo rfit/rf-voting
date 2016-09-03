@@ -1,69 +1,50 @@
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 
-import {PollItem} from '../PollItem/PollItem.component'
+import {Item} from './Item.component'
+import {Submit}   from './Submit.component'
 
-export class Poll extends Component {
-  constructor () {
-    super()
-    // set initial state
-    this.state = {
-      'selectedItems': []
-    }
+export const Poll = (props) => {
+  let pollError
+  if (props.pollError) {
+    pollError = 'Please select 3 projects'
   }
 
-  handleClick (id) {
-    const index = this.state.selectedItems.indexOf(id)
-    if (index >= 0) {
-      // create new array
-      let newArray = this.state.selectedItems.slice(0, index)
-      newArray = newArray.concat(this.state.selectedItems.slice(index + 1))
-      // set new state
-      this.setState({
-        selectedItems: newArray
-      })
-    } else if (index === -1) {
-      // create new array
-      const newArray = this.state.selectedItems.concat(id)
-      // set new state
-      this.setState({
-        selectedItems: newArray
-      })
-    }
-  }
+  return (
+    <div>
+      <h1>This is RF Poll!</h1>
+      <p>Take a look at our project thingies:</p>
+      {
+        props.items.map((item) => {
+          let selected = false
+          if (props.selectedItems.indexOf(item.id) > -1) {
+            selected = true
+          }
 
-  render () {
-    console.log('STATE:', this.state)
-    return (
-      <div>
-        <h1>This is RF Poll!</h1>
-        <p>Take a look at our project thingies:</p>
-        {
-          this.props.items.map((item, key) => {
-            let selected = false
-            if (this.state.selectedItems.indexOf(item.id) > -1) {
-              selected = true
-            }
-
-            return (
-              <div>
-                <PollItem
-                  name={item.name}
-                  key={key}
-                  id={item.id}
-                  onButtonClick={(e) => this.handleClick(e)} // eslint-disable-line
-                  selected={selected} />
-                <br />
-              </div>
-            )
-          })
-        }
-      </div>
-    )
-  }
+          return (
+            <div key={item.id}>
+              <Item
+                name={item.name}
+                id={item.id}
+                onButtonClick={(e) => props.itemSelect(e)} // eslint-disable-line
+                selected={selected} />
+              <br />
+            </div>
+          )
+        })
+      }
+      <br />
+      <h4 style={{'color': 'red'}}>{pollError}</h4>
+      <Submit submitAction={props.submitAction} />
+    </div>
+  )
 }
 
 Poll.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  selectedItems: PropTypes.array.isRequired,
+  submitAction: PropTypes.func.isRequired,
+  itemSelect: PropTypes.func.isRequired,
+  pollError: PropTypes.bool.isRequired
 }
 
 Poll.displayName = 'Poll'

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import {Poll} from './Poll/Poll.component'
+import {Container} from './Container/Container'
 
 // dummy project data
 const items = [
@@ -16,10 +16,26 @@ const items = [
   {
     name: 'Bojack Horsemans Liquor Store',
     id: 'bojack'
+  },
+  {
+    name: 'The Chinese Emperor',
+    id: 'china'
+  },
+  {
+    name: 'Powerpuff Pigerne',
+    id: 'powerpuff'
+  },
+  {
+    name: 'Scooby Doo',
+    id: 'scooby'
+  },
+  {
+    name: 'Rick and Morty',
+    id: 'rickandmorty'
   }
 ]
 
 ReactDOM.render(
-  <Poll items={items} />,
+  <Container items={items} />,
   document.getElementById('root')
 )

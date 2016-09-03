@@ -32,7 +32,8 @@
     "mongoose": "^4.5.8",
     "nunjucks": "^2.4.2",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react-dom": "^15.3.0",
+    "reqwest": "^2.0.5"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
@@ -59,6 +60,20 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": ["standard", "standard-react"]
+    "extends": [
+      "standard",
+      "standard-react"
+    ],
+    "rules": {
+      "no-multi-spaces": [
+        1,
+        {
+          "exceptions": {
+            "VariableDeclarator": true,
+            "ImportDeclaration": true
+          }
+        }
+      ]
+    }
   }
 }
