@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import {Container} from './Container/Container'
+import {Container} from './components/Container/Container'
 
 // dummy project data
 const items = [
