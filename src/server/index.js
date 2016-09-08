@@ -2,49 +2,71 @@
  * @file: This is the main entry point for the API and backend.
  */
 
-// Libraries
-const koa = require('koa')
-const route = require('koa-route')
-const cors = require('koa-cors')
-const views = require('koa-views')
-const serve = require('koa-static')
 const path = require('path')
 const mongoose = require('mongoose')
-const Models = require('./models')
+var VoteTally = require('./models/VoteTally'); // For initial population of aggregated votes
+
+// Setup
+const PORT = 3000
+const mongoUri = process.env.MONGO_URI || 'mongodb://localhost/voting'
+mongoose.connect(mongoUri)
+
+// Koa Libraries
+const koa = require('koa')
+const router = require('koa-router')()
+const betterBody = require('koa-better-body')
+const views = require('koa-views')
+const serve = require('koa-static')
 
 // Handlers
 const frontendHandlers = require('./frontend.handlers')
 const apiHandlers = require('./api.handlers')
 
-// Setup the databse
-const mongoUri = process.env.MONGO_URI || 'mongodb://localhost/voting'
-mongoose.connect(mongoUri)
-const models = Models()
-
-// setup the app
-const app = koa()
-const PORT = 3000
+// Start middleware handler
+const votingApp = koa()
 
 // Setup middlewares!
-app.use(cors())
-app.use(serve(path.join(__dirname, '../../public'), {defer: true}))
-app.use(views(path.join(__dirname, '../views'), {
+votingApp.use(serve(path.join(__dirname, '../../public'), {defer: true}))
+votingApp.use(views(path.join(__dirname, '../views'), {
   map: {
     html: 'nunjucks'
   }
 }))
-app.use(function * (next) {
-  this.models = models
+
+votingApp.use(betterBody()) // Provides this.body
+
+let reqStr = ''
+let reqCount = 1
+votingApp.use(function * (next) {
+  this.reqCount = reqCount
+  if (this.reqCount <= 1000 ) {
+    let paddedStr = ("    " + this.reqCount).slice(-4); // See http://stackoverflow.com/questions/2686855/is-there-a-javascript-function-that-can-pad-a-string-to-get-to-a-determined-leng
+    this.reqStr = ' ' + paddedStr + ' ' + this.request.url + ' | '
+  } else {
+    this.reqStr = ' ' + this.reqCount + ' ' + this.request.url + ' | '
+  }
+  console.log('-' + this.reqStr  + 'Start of chain')
+
+  if (this.reqCount <= 1) {
+    yield VoteTally.initializeTallies(this.reqStr)
+  }
   yield next
+
+  reqCount += 1
 })
 
 // Define frontend routes
-app.use(route.get('/', frontendHandlers.indexHandler))
+router.get('/', frontendHandlers.indexHandler)
+router.get('/projects.json', frontendHandlers.projectHandler)
 
 // Define API routes
-app.use(route.get('/api/', apiHandlers.indexHandler))
+router.post('/api/vote.json', apiHandlers.voteHandler)
+router.post('/api/login.json', apiHandlers.loginHandler)
+
+votingApp.use(router.routes())
+votingApp.use(router.allowedMethods());
 
 // Boot up the server!
-app.listen(PORT, () => {
-  console.log(`Started listening on ${PORT}`)
+votingApp.listen(PORT, () => {
+  console.log('.    0 [init] Started listening on ' + PORT)
 })
