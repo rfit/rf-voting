@@ -16,6 +16,5 @@ npm run dev
 ```
 
 ##
-Hosted on http://rfvoting.rfit.dk/
-Job http://immortal.rfit.dk/login?from=%2Fjob%2FRF%2520Voting%2520-%2520Deploy%2520to%2520production
-rfdev / rddev
+* Hosted on http://rfvoting.rfit.dk/
+* Deploy job http://immortal.rfit.dk/login?from=%2Fjob%2FRF%2520Voting%2520-%2520Deploy%2520to%2520production
