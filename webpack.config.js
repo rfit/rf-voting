@@ -5,10 +5,24 @@ module.exports = {
         filename: 'app.bundle.js',
     },
     module: {
-        loaders: [{
+        loaders: [
+          {
+            test: /\.react.scss/,
+            loader: 'react-css-components',
+            query: {
+              loadCSS: [
+                'style-loader',
+                'css-loader?modules',
+                'sass-loader',
+              ]
+            }
+          },
+          {
             test: /\.js$/,
             exclude: /node_modules/,
             loader: 'babel-loader',
-        }]
-    }
+          }
+        ]
+    },
+
 }

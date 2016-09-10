@@ -44,8 +44,8 @@ function isValidItems(items) {
   return idsExist && items.length === 3;
 }
 
-var VoteTally = require('./models/VoteTally');
-var Vote = require('./models/Vote');
+const VoteTally = require('./models/VoteTally');
+const Vote = require('./models/Vote');
 
 function getValidBody(body) {
   let parsedBody = JSON.parse( body );
@@ -75,12 +75,12 @@ module.exports.voteHandler = function* () {
     let fbResponse = validBody['fbResponse']
     let user = yield Vote.findOneAsync({userID: fbResponse.userID})
     if(!user || this.reqCount < 10000) { // TODO prototype test hack NOT FOR PRODUCTION
-      console.log('\\' + this.reqStr + 'User has not voted or less than 10000 requests. Will create new vote and update tallys: ', fbResponse.name, items)
+      console.log(' *** User has not voted or less than 10000 requests. Will create new vote and update tallys: ', fbResponse.name, items)
 
       if(!user) {
         //TODO here we assume valid facebook user, but this is only guaranteed for requests made by the frontend (i.e. poll spamming is possible)
         let newVoteParams = makeNewVote(items, fbResponse)
-        var newVote = new Vote(newVoteParams)
+        let newVote = new Vote(newVoteParams)
         yield newVote.saveAsync()
       }
 
@@ -103,7 +103,7 @@ module.exports.voteHandler = function* () {
 
   } else { // Invalid body request
     this.status = 400
-    console.log('\\' + this.reqStr + 'Request made with invalid body', this.body, this.request)
+    console.log('*** Request made with invalid body', this.body, this.request)
     this.body = {
       msg: 'Error'
     }

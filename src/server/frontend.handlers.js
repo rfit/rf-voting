@@ -3,6 +3,5 @@ module.exports.indexHandler = function* () {
 }
 
 module.exports.projectHandler = function* () {
-  const testSet1 = require('./testSet1.json');
-  this.body = testSet1
+  this.body = require('./testSet1.json')
 }
