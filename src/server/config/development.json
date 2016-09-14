@@ -1,4 +1,5 @@
 {
+  "serverMode": "development",
   "requestPort": 3000,
   "mongoUri": "mongodb://localhost/voting",
   "allowMultipleVotes": true

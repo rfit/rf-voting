@@ -1,31 +1,31 @@
-import React, {Component, PropTypes} from 'react'
-
+import React from 'react'
 import FontAwesome from 'react-fontawesome'
 
-export default class Stats extends Component {
-  constructor() {
-    super()
-  }
+import s from './Stats.css'
 
+export default class Stats extends React.Component {
   render() {
-    let { show } = this.props
-    if (!show)
-      return <div></div>
-
     let { share, total, shareMultiplier } = this.props
     let sharePercentage = (share * 100).toFixed(1)
     let shareWidth = (share * 100 * shareMultiplier).toFixed(0) + '%'
     return (
-      <div className='statsRoot'>
-        <div className='statsShare' style={{width: shareWidth}} />
-        <div className='statsText'>
+      <div className={s.root}>
+        <div className={s.share} style={{width: shareWidth}} />
+        <div className={s.text}>
           {total + ' '}
           <FontAwesome name='thumbs-o-up' size='lg'/>
         </div>
-        <div className='statsText'>
+        <div className={s.text}>
           {sharePercentage} {'%'}
         </div>
       </div>
     )
   }
 }
+
+Stats.propTypes = {
+  share: React.PropTypes.number,
+  total: React.PropTypes.number,
+  shareMultiplier: React.PropTypes.number
+}
+

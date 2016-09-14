@@ -1,9 +1,7 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
-const Promise = require('bluebird'); //ADD THIS LINE
-Promise.promisifyAll(mongoose); //AND THIS LINE
-
-const testSet1 = require('./../testSet1.json');
+const Schema = mongoose.Schema; // Note the order
+const Promise = require('bluebird');
+Promise.promisifyAll(mongoose);
 
 const VoteTallySchema = new Schema({
   itemId: { type: String, required: true, unique: true },
@@ -13,8 +11,7 @@ const VoteTallySchema = new Schema({
   updated_at: { type: Date, default: Date.now }
 });
 
-
-VoteTallySchema.statics.updateShareOfVote = function * updateShareOfVote(reqStr) {
+VoteTallySchema.statics.updateShareOfVote = function * updateShareOfVote() {
   let allTallies = yield VoteTally.findAsync()
 
   let total = 0
@@ -31,6 +28,8 @@ VoteTallySchema.statics.updateShareOfVote = function * updateShareOfVote(reqStr)
   }
   console.log('*** Updated share of vote. Sum of shares: ', shareSum, ' Total votes:', total)
 }
+
+const testSet1 = require('./../testSet1.json');
 
 VoteTallySchema.statics.initializeTallies = function* () {
   let voteTalliesCreated = 0

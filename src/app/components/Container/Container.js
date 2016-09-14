@@ -1,19 +1,16 @@
-import React, {Component} from 'react'
+import React from 'react'
+
+import s from './Container.css'
 
 import SelectionProjects from '../Selection/Selection.container'
 import Vote from '../Vote/Vote.container'
-import {Header} from './Container.react.scss'
 
-export class Container extends Component {
-  constructor () {
-    super()
-  }
 
+export class Container extends React.Component {
   render () {
-    return <div className='containerRoot'>
+    return <div className={s.root}>
         <SelectionProjects />
         <Vote />
-        <Header >Pink!</Header>
     </div>
   }
 }

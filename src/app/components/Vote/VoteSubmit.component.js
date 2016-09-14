@@ -1,59 +1,64 @@
-import React, {Component, PropTypes} from 'react'
+import React from 'react'
 
 import FacebookLogin from 'react-facebook-login';
 import FontAwesome from 'react-fontawesome'
+import ToggleDisplay from 'react-toggle-display';
 
-export default class VoteSubmit extends Component {
-  constructor() {
-    super()
-  }
+//TODO get app id from config. Can we get an RF account @ FB?
+
+import s from './Vote.css'
+
+export default class VoteSubmit extends React.Component {
   render() {
-    let { selectedItems, fbResponse } = this.props
+    let { selectedItems, fbResponse, hasVoted, hasLoggedIn, fbName, fbPictureSrc } = this.props
     let { submitVoteAsync, userLoggedInAsync } = this.props
-    let { hasVoted, hasLoggedIn } = this.props
 
     let hasSelectedThree = selectedItems.length === 3
     let canVote = hasSelectedThree && !hasVoted && hasLoggedIn
 
-    let buttonText = canVote ? 'Cast your vote!' : 'Select three projects'
-    buttonText = !hasSelectedThree && !hasLoggedIn ? 'Select three projects and login with facebook' : buttonText
-    buttonText = hasSelectedThree && !hasLoggedIn ? 'Please login with facebook to register your vote' : buttonText
-    buttonText = hasVoted ? 'Voting...' : buttonText
-    buttonText = hasLoggedIn && hasVoted ? 'Thank you for voting!' : buttonText
+    let buttonLbl = canVote ? 'Cast your vote!' : 'Select three projects'
+    buttonLbl = !hasSelectedThree && !hasLoggedIn ? 'Select three projects and login with facebook' : buttonLbl
+    buttonLbl = hasSelectedThree && !hasLoggedIn ? 'Please login with facebook to register your vote' : buttonLbl
+    buttonLbl = hasVoted ? 'Voting...' : buttonLbl
+    buttonLbl = hasLoggedIn && hasVoted ? 'Thank you for voting!' : buttonLbl
 
-    let buttonCssClass = hasVoted ? 'voteSubmitButton voteSubmitButtonActivated' : (canVote ? 'voteSubmitButton voteSubmitButtonEnabled' : 'voteSubmitButton')
-    let fbName = typeof fbResponse['name'] === 'string' ? fbResponse['name'] : ''
-    let fbPictureSrc = typeof fbResponse['picture'] === 'object' ? fbResponse['picture']['data']['url'] : ''
+    let buttonCssClass = hasVoted ? s.voteButtonActivated : ( canVote ? s.voteButtonEnabled : s.voteButton )
     let voteLbl = hasVoted ? 'Voted' : 'Voting'
     return (
-      <div className='voteSubmitRoot'>
-        <div className='selectionLeft'>
+      <div className={s.root}>
+        <div className={s.left}>
           <button className={buttonCssClass} onClick={() => canVote && submitVoteAsync(selectedItems, fbResponse)}>
-            <div style={{width: '70%', display: 'inline-block', textAlign: 'center'}}>
-              <span>{buttonText}</span>
+            <div className={s.voteButtonText}>
+              <span>{buttonLbl}</span>
              </div>
           </button>
         </div>
-        <div className='selectionRight'>
-          <button className={hasLoggedIn ? 'kep-fb-login' : 'voteSubmitHidden'} style={{position: 'relative'}}
-                  onClick={() => hasLoggedIn && hasVoted && userLoggedInAsync(fbResponse)}>
-            <div style={{width: '60%', display: 'inline-block', textAlign: 'center'}}>
-              <FontAwesome name='facebook' size='lg' style={{verticalAlign: 'top'}}/>
-              <span style={{zIndex: '50'}}>{voteLbl} as {fbName}</span>
-            </div>
-            <img src={fbPictureSrc} style={{right: '12px', top: '6px', position: 'absolute'}} />
-          </button>
-
-          <FacebookLogin
-            appId='1746188185654658'
-            autoLoad={true}
-            fields='name,email,picture'
-            callback={userLoggedInAsync}
-            cssClass={hasLoggedIn ? 'voteSubmitHidden' : 'kep-fb-login'}
-            icon='fa-facebook'
-          />
+        <div className={s.right}>
+          <ToggleDisplay show={hasLoggedIn}>
+            <button className={s.fbLogin} onClick={() => hasLoggedIn && hasVoted && userLoggedInAsync(fbResponse)}>
+              <div className={s.fbText}>
+                <i>
+                  <FontAwesome name='facebook' size='lg' className={s.fbIcon}/>
+                </i>
+                <span>{voteLbl} as {fbName}</span>
+              </div>
+              <img className={s.fbPic} src={fbPictureSrc} />
+            </button>
+          </ToggleDisplay>
+          <ToggleDisplay show={!hasLoggedIn}>
+            <FacebookLogin cssClass={s.fbLogin} appId='1746188185654658' autoLoad={true} fields='name,email,picture' callback={userLoggedInAsync} icon='fa-facebook' />
+          </ToggleDisplay>
         </div>
       </div>
     )
   }
+}
+
+VoteSubmit.propTypes = {
+  selectedItems: React.PropTypes.arrayOf(React.PropTypes.string),
+  fbResponse: React.PropTypes.object,
+  hasVoted: React.PropTypes.bool.isRequired,
+  hasLoggedIn: React.PropTypes.bool.isRequired,
+  submitVoteAsync: React.PropTypes.func.isRequired,
+  userLoggedInAsync: React.PropTypes.func.isRequired
 }

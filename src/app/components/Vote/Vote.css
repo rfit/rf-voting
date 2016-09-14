@@ -1,0 +1,84 @@
+.root {
+  width: 100%;
+}
+
+.left { /* TODO take widths from variables ?*/
+  width: 60%;
+  display: inline-block;
+  vertical-align: text-top;
+  text-align: center;
+}
+.right {
+  width: 37%;
+  display: inline-block;
+  vertical-align: text-top;
+  text-align: center;
+}
+
+.voteButton {
+    display: inline-block;
+    width: 90%;
+    height: 70px;
+    overflow: visible;
+    border-radius: 4px;
+    border: 4px solid transparent;
+    background-color: #fafafa;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.voteButton span {
+    text-transform: uppercase;
+}
+
+.voteButtonActivated { /* TODO make hover work with this..*/
+    composes: voteButton;
+
+    color: #ed7303;
+    border-color: #ed7303;
+}
+
+.voteButtonEnabled {
+    composes: voteButton;
+
+    cursor: pointer;
+}
+
+.voteButtonText {
+    width: 70%;
+    display: inline-block;
+    text-align: center;
+}
+
+.fbLogin { /* As Vote Button */
+    position: relative;
+    display: inline-block;
+    width: 90%;
+    height: 70px;
+    overflow: visible;
+    border-radius: 4px;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 300;
+    border: 4px solid #4c69ba;
+    background-color: #4c69ba;
+    font-family: Helvetica,sans-serif;
+    color: #fff;
+    cursor: pointer;
+}
+.fbLogin i {
+    margin-right: calc(.34435vw + 3.38843px);
+    vertical-align: top;
+}
+.fbText {
+    width: 60%;
+    display: inline-block;
+    text-align: center;
+}
+
+.fbPic {
+    right: 12px;
+    top: 6px;
+    position: absolute;
+}

@@ -1,17 +1,51 @@
-const testSet1 = require('./testSet1.json');
+const {sprintf, vsprintf} = require("sprintf-js")
+
+const testSet1 = require('./testSet1.json')
 
 function isValidFbResponse(fbResponse) {
   if (typeof fbResponse !== 'object')
     return false
 
-  if (typeof fbResponse['userID'] !== 'string')
-    return false
-  if (typeof fbResponse['email'] !== 'string')
-    return false
-  if (typeof fbResponse['name'] !== 'string')
-    return false
+  return typeof fbResponse['userID'] === 'string' && typeof fbResponse['email'] === 'string' && typeof fbResponse['name'] === 'string'
+}
 
-  return true;
+function isValidItems(items) {
+  let itemIdsExist = items.every((itemId) => {
+    return testSet1.some((project) => project.id === itemId)
+  })
+  return itemIdsExist && items.length === 3
+}
+
+const VoteTally = require('./models/VoteTally')
+const Vote = require('./models/Vote')
+
+let testUser1Body = {
+  items: [
+    testSet1[0].id,
+    testSet1[1].id,
+    testSet1[2].id
+  ],
+  fbResponse: {
+    name: 'votingUser1',
+    email: 'votingUser1@rfit.dk',
+    userID: 'votingUserUserId'
+  }
+}
+function getValidBody(body) {
+  let parsedBody = JSON.parse( body )
+  let bodyIsValid = isValidItems(parsedBody['items']) && isValidFbResponse(parsedBody['fbResponse'])
+
+  if (bodyIsValid)
+    return parsedBody
+
+  if ( require('config').get('allowMultipleVotes') ) {
+    console.log(sprintf('*** Using test user for body.fbResponse instead of that parsed. [allowMultipleVotes: %s]', require('config').get('allowMultipleVotes')))
+    if ( isValidItems(parsedBody['items']) ) {
+      parsedBody.fbResponse = testUser1Body.fbResponse
+      return parsedBody
+    }
+    return testUser1Body
+  }
 }
 
 function makeNewVote(items, fbResponse) {
@@ -27,30 +61,6 @@ function makeNewVote(items, fbResponse) {
     meta: {
       fbResponse: JSON.stringify(fbResponse)
     }
-  }
-}
-
-function isValidItems(items) {
-  let idsExist = true;
-  items.forEach((itemId) => {
-    let found = false;
-    testSet1.forEach((project) => {
-      if (itemId === project.id) {
-        found = true;
-      }
-    });
-    idsExist = idsExist && found // If this becomes false at any point, cannot become true again
-  })
-  return idsExist && items.length === 3;
-}
-
-const VoteTally = require('./models/VoteTally');
-const Vote = require('./models/Vote');
-
-function getValidBody(body) {
-  let parsedBody = JSON.parse( body );
-  if (isValidItems(parsedBody['items']) && isValidFbResponse(parsedBody['fbResponse'])) { // Validate body
-    return parsedBody;
   }
 }
 
@@ -74,16 +84,15 @@ module.exports.voteHandler = function* () {
     let items = validBody['items']
     let fbResponse = validBody['fbResponse']
     let user = yield Vote.findOneAsync({userID: fbResponse.userID})
-    if(!user || this.reqCount < 10000) { // TODO prototype test hack NOT FOR PRODUCTION
-      console.log(' *** User has not voted or less than 10000 requests. Will create new vote and update tallys: ', fbResponse.name, items)
-
-      if(!user) {
+    if(!user) {
         //TODO here we assume valid facebook user, but this is only guaranteed for requests made by the frontend (i.e. poll spamming is possible)
         let newVoteParams = makeNewVote(items, fbResponse)
         let newVote = new Vote(newVoteParams)
         yield newVote.saveAsync()
-      }
+    }
 
+    if(!user || require('config').get('allowMultipleVotes')) { // TODO document
+      console.log(sprintf('*** Will vote as %s and update update tallys on %s [allowMultipleVotes: %s]', fbResponse.name, items, require('config').get('allowMultipleVotes')))
       let t1 = yield VoteTally.findOneAsync({itemId: items[0]})
       let t2 = yield VoteTally.findOneAsync({itemId: items[1]})
       let t3 = yield VoteTally.findOneAsync({itemId: items[2]})
@@ -91,7 +100,7 @@ module.exports.voteHandler = function* () {
       yield VoteTally.findByIdAndUpdateAsync(t2._id, { $inc: { totalVotes: 1 }}, { 'new': true }),
       yield VoteTally.findByIdAndUpdateAsync(t3._id, { $inc: { totalVotes: 1 }}, { 'new': true })
 
-      yield VoteTally.updateShareOfVote(this.reqStr)
+      yield VoteTally.updateShareOfVote()
     }
 
     let stats = yield getStats()
@@ -114,6 +123,7 @@ module.exports.loginHandler = function* () {
   let parsedBody = JSON.parse( this.body )
   let user = yield Vote.findOneAsync({userID: parsedBody['fbResponse'].userID})
   this.status = 404
+
   if (user) {
     this.status = 200
     let stats = yield getStats()

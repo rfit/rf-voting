@@ -1,6 +1,6 @@
 Taken from https://github.com/lorenwest/node-config/wiki/Configuration-Files
 
-Note in particular the use of ```local``` files
+Note in particular the use of ```local``` files if you want to make a change without touching tracked files.
 
 See also cross-env usage in package.json scripts to explicitly set  ```$NODE_CONFIG_DIR```
  

@@ -1,0 +1,16 @@
+html {
+    font-family: "rf4000","Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    text-rendering: optimizeLegibility;
+    background: #2e2e2e;
+}
+
+body {
+    margin: 15px;
+}
+
+
+.root {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

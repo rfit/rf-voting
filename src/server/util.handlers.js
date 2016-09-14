@@ -3,32 +3,39 @@ const mongoose = require('mongoose')
 const config = require('config')
 const VoteTally = require('./models/VoteTally')
 
-module.exports.connectToMongo = function* () {
-  yield mongoose.connect(require('config').get('mongoUri'))
+module.exports.connectToMongo = function () {
+  mongoose.connect(require('config').get('mongoUri'))
 }
-
 
 let voteTalliesInitialized = false
 module.exports.ensureVoteTalliesExist = function* (next) {
   if (!voteTalliesInitialized) {
-    VoteTally.initializeTallies(this.reqStr)
+    yield VoteTally.initializeTallies()
     voteTalliesInitialized = true
   }
   if(!VoteTally.allTalliesExist()) {
-    console.log("ERROR: Could not find all tallies. Restart this server to initialize with defaults or manually correct.")
     //TODO make check and throw 500 if non existing?
+    this.status = 500
+    console.log("ERROR: Could not find all tallies. Restart this server to initialize with defaults or manually correct.")
   } else {
-    console.log("All tallies exist!")
+    yield next
   }
-  yield next
 }
 
-let reqCount = 1
+let reqCount = 0
 module.exports.requestCounter = function* (next) {
   if (reqCount % 50 === 0) {
     console.log(vsprintf(" *** %5d requests handled %s***", [reqCount, new Date().toString()]))
   }
-  yield next
+
+  try { // TODO Figure out how to properly wrap and handle exceptions
+    yield next
+  } catch (err) {
+    this.status = err.status || 500
+    this.body = err.message
+    this.app.emit('error', err, this)
+  }
+
   reqCount += 1
 }
 

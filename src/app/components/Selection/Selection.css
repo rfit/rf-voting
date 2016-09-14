@@ -1,0 +1,17 @@
+.root {
+    margin-bottom: 1%;
+}
+
+.left {
+    width: 60%;
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+}
+
+.right {
+    width: 37%;
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+}

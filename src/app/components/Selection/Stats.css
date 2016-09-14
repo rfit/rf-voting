@@ -1,0 +1,32 @@
+.root {
+    display: inline-block;
+    background-color: white;
+    padding: 7px;
+    height: 56px;
+    width: 98%;
+    position: relative;
+    margin-left: 5px;
+    border-radius: 4px;
+}
+
+.share {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    background-color: #ed7303;
+    height: 100%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.text {
+    position: relative;
+    text-align: left;
+    display: block;
+    font-family: "rf4000",Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black",sans serif;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    font-size: 1.3em;
+    margin-bottom: 6px;
+}
