@@ -91,7 +91,6 @@
     background-color: #4c69ba;
     border-color: #4c69ba;
     color: #fff;
-    cursor: pointer;
 }
 
 .fbLogin {
@@ -104,6 +103,8 @@
 
 .fbLoginActive {
     composes: fbLogin fb-animate;
+    
+    cursor: pointer;
 }
 
 .fbText {
