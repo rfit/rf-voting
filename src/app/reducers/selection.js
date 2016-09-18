@@ -1,4 +1,4 @@
-import {SET_PROJECTS, SELECT_PROJECT, SET_SELECTED_PROJECTS} from '../constants';
+import { SET_PROJECTS, SELECT_PROJECT, SET_SELECTED_PROJECTS } from '../constants';
 
 function resultingSelectedItems(state, itemId) { // Toggle selected projects emulating a stack (toggling most recent selection if user indicates a fourth choice)
   let selectedItems = []
@@ -28,19 +28,22 @@ let selectionInitialState = {
 export default function selection(state = selectionInitialState, action) {
   switch (action.type) {
     case SET_PROJECTS:
-      return Object.assign({}, state, { // No ... spread operator TODO get it with proper transpiling
-          items: action.payload.projects
-      })
+      return {
+        ...state,
+        items: action.payload.projects
+      }
 
     case SELECT_PROJECT:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         selectedItems: resultingSelectedItems(state, action.payload.id)
-      })
+      }
 
     case SET_SELECTED_PROJECTS:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         selectedItems: action.payload.items
-      })
+      }
 
     default:
       return state

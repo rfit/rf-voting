@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema; // Note the order
+const Promise = require('bluebird');
+Promise.promisifyAll(mongoose);
 
-var VoteSchema = new Schema({
+const VoteSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   userID: { type: String, required: true, unique: true },

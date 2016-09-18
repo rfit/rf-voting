@@ -1,0 +1,6 @@
+{
+  "serverMode": "production",
+  "requestPort": 3000,
+  "mongoUri": "mongodb://localhost/voting",
+  "allowMultipleVotes": false
+}

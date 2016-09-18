@@ -1,0 +1,18 @@
+.root {
+    margin-bottom: 5vh;
+    height: 70vh;
+}
+
+.left {
+    width: 60%;
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+}
+
+.right {
+    width: 37%;
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+}

@@ -5,10 +5,9 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
+
+
 import rootReducer from './reducers';
-
-import {Container} from './components/Container'
-
 const loggerMiddleware = createLogger()
 
 // Initial state of store is handled by individual reducers
@@ -20,6 +19,7 @@ const store = createStore(
   )
 )
 
+import {Container} from './components/Container'
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,5 +1,8 @@
+#Flux folder
+This is part of the Flux application architecture used. See ```docs/how-to-integrate-redux-md``` for the project setup. 
 # Action creators
 Action creators go in this folder.
+
 ## Synchronous
 * To create a synchronous action creator:
   * Return an object <code>{type: ACTION_TYPE_CONSTANT, payload: {...}}</code>. 

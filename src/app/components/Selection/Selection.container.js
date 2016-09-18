@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   return { // Becomes Props on Selection
     items: state.selection.items,
     selectedItems: state.selection.selectedItems,
+    hoveredItem: state.selection.selectedItems,
     hasVoted: state.vote.hasVoted,
     hasLoggedIn: state.vote.hasLoggedIn,
     showStats: state.vote.showStats,

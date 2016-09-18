@@ -1,9 +1,7 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
-const Promise = require('bluebird'); //ADD THIS LINE
-Promise.promisifyAll(mongoose); //AND THIS LINE
-
-const testSet1 = require('./../testSet1.json');
+const Schema = mongoose.Schema; // Note the order
+const Promise = require('bluebird');
+Promise.promisifyAll(mongoose);
 
 const VoteTallySchema = new Schema({
   itemId: { type: String, required: true, unique: true },
@@ -13,8 +11,7 @@ const VoteTallySchema = new Schema({
   updated_at: { type: Date, default: Date.now }
 });
 
-
-VoteTallySchema.statics.updateShareOfVote = function * updateShareOfVote(reqStr) {
+VoteTallySchema.statics.updateShareOfVote = function * updateShareOfVote() {
   let allTallies = yield VoteTally.findAsync()
 
   let total = 0
@@ -29,10 +26,12 @@ VoteTallySchema.statics.updateShareOfVote = function * updateShareOfVote(reqStr)
     shareSum += share
     yield VoteTally.findByIdAndUpdateAsync(id, { $set: { shareOfVotes: share }}, { 'new': true })
   }
-  console.log('\\' + reqStr + 'Updated share of vote. Sum of shares: ', shareSum, ' Total votes:', total)
+  console.log('*** Updated share of vote. Sum of shares: ', shareSum, ' Total votes:', total)
 }
 
-VoteTallySchema.statics.initializeTallies = function* (reqStr) {
+const testSet1 = require('./../testSet1.json');
+
+VoteTallySchema.statics.initializeTallies = function* () {
   let voteTalliesCreated = 0
   for (let i = 0; i < testSet1.length; i++) {
     let project = testSet1[i]
@@ -46,11 +45,25 @@ VoteTallySchema.statics.initializeTallies = function* (reqStr) {
     }
   }
   if (voteTalliesCreated > 0) {
-    console.log('\\' + reqStr + 'Created ' + voteTalliesCreated + ' voteTallies that did not exists at app start')
+    console.log('*** Created ' + voteTalliesCreated + ' voteTallies that did not exists at app start')
   } else {
-    console.log('\\' + reqStr + 'All necessary voteTallies exist, no data change during initialization')
+    console.log('*** All necessary voteTallies exist, no data change during initialization')
   }
+}
 
+
+VoteTallySchema.statics.allTalliesExist = function* () {
+  let voteTalliesMissing = false
+  console.log(new Date().toString())
+  for (let i = 0; i < testSet1.length; i++) {
+    let project = testSet1[i]
+    let existingVoteTally = yield VoteTally.findOneAsync({itemId: project.id}) // TODO Use collection of ids from testSet1?
+    if (!existingVoteTally) {
+      voteTalliesMissing = true
+    }
+  }
+  console.log(new Date().toString())
+  yield voteTalliesMissing
 }
 
 let VoteTally = mongoose.model('VoteTally', VoteTallySchema);

@@ -1,0 +1,129 @@
+.root {
+    width: 100%;
+}
+
+.left {
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+    width: 60%;
+}
+
+.right {
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+    width: 37%;
+}
+
+.voteBase {
+    display: inline-block;
+    background-color: #fafafa;
+    border: 6px solid transparent;
+    border-radius: 6px;
+    height: 14vh;
+    overflow: visible;
+    text-transform: uppercase;
+    width: 90%;
+}
+
+.vote-effect:hover {
+    color: #ed7303;
+    border-color: #ed7303;
+
+}
+
+.voteButton {
+    composes: voteBase vote-effect;
+}
+
+
+@keyframes vote-frames {
+    0%   {
+        border-color: white;
+        color: black;
+    }
+    50% {
+        border-color: #ed7303;
+        color: #ed7303;
+    }
+    100%   {
+        border-color: white;
+        color: black;
+    }
+}
+
+.vote-animate {
+    animation: vote-frames 2.5s infinite ease;
+}
+
+
+.voteButtonEnabled {
+    composes: voteBase vote-effect vote-animate;
+
+    cursor: pointer;
+}
+
+.voteButtonFinished {
+    composes: voteBase vote-animate;
+}
+
+.voteButtonText {
+    composes: font-base from '../styling/typography.css';
+
+    display: inline-block;
+    text-align: center;
+}
+
+/* FB */
+@keyframes fb-frames {
+    0%   {border-color: #ed7303;}
+    30%   {border-color: white;}
+    50%   {border-color: #4c69ba;}
+    70%   {border-color: white;}
+    100%   {border-color: #ed7303;}
+
+}
+
+.fbComp {
+    composes: font-base from '../styling/typography.css';
+
+    background-color: #4c69ba;
+    border-color: #4c69ba;
+    color: #fff;
+}
+
+.fbLogin {
+    composes: voteBase fbComp;
+}
+
+.fb-animate {
+    animation: fb-frames 3.5s infinite ease;
+}
+
+.fbLoginActive {
+    composes: fbLogin fb-animate;
+    
+    cursor: pointer;
+}
+
+.fbText {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+}
+
+.fbPic {
+    margin-left: 2vw;
+    vertical-align: middle;
+    border-radius: 50%;
+    transform: scale(1.05);
+}
+
+.fbLogin i { /* Matches FA icon */
+    margin-right: 1.5vw;
+    vertical-align: middle;
+}

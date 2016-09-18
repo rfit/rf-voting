@@ -1,4 +1,5 @@
 export function statusCheck(response) {
+  console.log("statusCheck", response)
   if (response.status >= 200 && response.status < 300) {
     return Promise.resolve(response)
   } else if ( response.status === 401 || response.status === 404 ) {

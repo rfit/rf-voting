@@ -14,3 +14,6 @@ db
 .DS_Store
 npm-debug.log
 .env
+
+#WebStorm?
+.idea

@@ -1,7 +1,6 @@
-## How to Integrate [Redux](http://redux.js.org/index.html)
+To learn more about flux (of which redux is a React implementation) have a took at (https://facebook.github.io/flux/docs/overview.html).
 
-Merge `feature/redux` branch with Git. If you are interested in `feature/react-intl`, merge that
-branch instead as it also includes Redux.
+## How to Integrate [Redux](http://redux.js.org/index.html)
 
 **If you don't know Redux well, you should [read about it first](http://redux.js.org/docs/basics/index.html).**
 
@@ -49,8 +48,3 @@ See [Usage With React](http://redux.js.org/docs/basics/UsageWithReact.html) on r
 For an example you can look at
 [`<LanguageSwitcher>`](https://github.com/kriasoft/react-starter-kit/blob/feature/react-intl/src/components/LanguageSwitcher/LanguageSwitcher.js)
 component from `feature/react-intl` branch. It demonstrates both subscribing to store and dispatching actions.
-
-
-### Dispatching Actions On Server
-
-See source of `src/server.js`

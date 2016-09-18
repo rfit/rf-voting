@@ -4,11 +4,15 @@ import { submitVoteAsync, userLoggedInAsync } from '../../actions/vote'
 import VoteSubmit from './VoteSubmit.component'
 
 const mapStateToProps = (state, ownProps) => {
+  let fbResponse = state.vote.fbResponse
   return { // Becomes Props on Selection
     hasVoted: state.vote.hasVoted,
     selectedItems: state.selection.selectedItems,
     hasLoggedIn: state.vote.hasLoggedIn,
-    fbResponse: state.vote.fbResponse
+    fbResponse: fbResponse,
+    fbName: fbResponse['name'] ? fbResponse['name'] : '',
+    fbPictureSrc: typeof fbResponse['picture'] === 'object' ? fbResponse['picture']['data']['url'] : '',
+
   }
 }
 

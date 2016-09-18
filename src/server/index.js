@@ -3,70 +3,49 @@
  */
 
 const path = require('path')
-const mongoose = require('mongoose')
-var VoteTally = require('./models/VoteTally'); // For initial population of aggregated votes
-
-// Setup
-const PORT = 3000
-const mongoUri = process.env.MONGO_URI || 'mongodb://localhost/voting'
-mongoose.connect(mongoUri)
 
 // Koa Libraries
 const koa = require('koa')
+const logger = require('koa-logger')
 const router = require('koa-router')()
 const betterBody = require('koa-better-body')
 const views = require('koa-views')
 const serve = require('koa-static')
 
 // Handlers
+const utilHandlers = require('./util.handlers')
 const frontendHandlers = require('./frontend.handlers')
 const apiHandlers = require('./api.handlers')
 
-// Start middleware handler
+utilHandlers.connectToMongo() // Warning: Application stalls if not connected to mongo
+
+// Start middleware handler (i.e. koa) - note that koa middleware is a generator function
 const votingApp = koa()
+votingApp.use(logger())
 
-// Setup middlewares!
-votingApp.use(serve(path.join(__dirname, '../../public'), {defer: true}))
-votingApp.use(views(path.join(__dirname, '../views'), {
-  map: {
-    html: 'nunjucks'
+votingApp.use(serve(path.join(__dirname, '../../public'), { defer: true })) // Only files below this root are served
+votingApp.use(views(path.join(__dirname, '../views')), {
+    map: {
+      html: 'nunjucks'
+    },
+    ext: '.html'
   }
-}))
+) // Provides this.render
 
-votingApp.use(betterBody()) // Provides this.body
+votingApp.use(betterBody()) // Provides this.body upstream
 
-let reqStr = ''
-let reqCount = 1
-votingApp.use(function * (next) {
-  this.reqCount = reqCount
-  if (this.reqCount <= 1000 ) {
-    let paddedStr = ("    " + this.reqCount).slice(-4); // See http://stackoverflow.com/questions/2686855/is-there-a-javascript-function-that-can-pad-a-string-to-get-to-a-determined-leng
-    this.reqStr = ' ' + paddedStr + ' ' + this.request.url + ' | '
-  } else {
-    this.reqStr = ' ' + this.reqCount + ' ' + this.request.url + ' | '
-  }
-  console.log('-' + this.reqStr  + 'Start of chain')
+/* Non route specific middleware */
+votingApp.use(utilHandlers.requestCounter)
+votingApp.use(utilHandlers.ensureVoteTalliesExist)
 
-  if (this.reqCount <= 1) {
-    yield VoteTally.initializeTallies(this.reqStr)
-  }
-  yield next
-
-  reqCount += 1
-})
-
-// Define frontend routes
+/* Routes setup */
 router.get('/', frontendHandlers.indexHandler)
 router.get('/projects.json', frontendHandlers.projectHandler)
 
-// Define API routes
 router.post('/api/vote.json', apiHandlers.voteHandler)
 router.post('/api/login.json', apiHandlers.loginHandler)
 
 votingApp.use(router.routes())
-votingApp.use(router.allowedMethods());
+votingApp.use(router.allowedMethods())
 
-// Boot up the server!
-votingApp.listen(PORT, () => {
-  console.log('.    0 [init] Started listening on ' + PORT)
-})
+votingApp.listen(require('config').get('requestPort'), utilHandlers.startUpHandler)

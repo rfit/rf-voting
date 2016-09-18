@@ -1,41 +1,36 @@
-import React, {Component, PropTypes} from 'react'
-import Stats from './Stats.component'
+import React from 'react'
+import Block from './Block/Block.component'
+import Stats from './Stats/Stats.component'
+import ToggleDisplay from 'react-toggle-display';
 
-export default class Selection extends Component {
-  constructor() {
-    super()
-  }
+import s from './Selection.css'
 
+export default class Selection extends React.Component {
   componentDidMount() {
     this.props.getProjectsAsync()
   }
 
   render() {
-    let { items } = this.props
-    let { selectedItems, selectProject } = this.props
-    let { hasVoted, showStats } = this.props
-    let { share, totals, shareMultiplier } = this.props
+    let { items, selectedItems, share, totals } = this.props
+    let { hasVoted, showStats, shareMultiplier } = this.props
+    let { selectProject } = this.props
     return (
-      <div className='selectionRoot'>
+      <div className={s.root}>
         {
-          items.map((item) => {
-            let { id } = item
-            let { name } = item
-            let itemCssClass = selectedItems.indexOf(item.id) > -1 ? 'selectionBlock selectionChosen' : 'selectionBlock'
+          items.map((project) => {
+            let { id, name } = project
             return (
               <div key={id}>
-                <div className='selectionLeft'>
-                  <div className={itemCssClass}
-                       onClick={!hasVoted ? () => selectProject(id) : () => {}} >
-                    <span className='selectionHeader'>
-                      {name}
-                    </span>
+                <div className={s.left}>
+                  <Block label={name} isSelected={selectedItems.includes(id)}
+                         clickHandler={(e) => !hasVoted && selectProject(id)}/>
+                </div>
+                <ToggleDisplay show={showStats}>
+                  <div className={s.right}>
+                    <Stats shareMultiplier={shareMultiplier} share={share[id]} total={totals[id]}>
+                    </Stats>
                   </div>
-                </div>
-                <div className='selectionRight'>
-                  <Stats show={showStats} shareMultiplier={shareMultiplier} share={share[id]} total={totals[id]}>
-                  </Stats>
-                </div>
+                </ToggleDisplay>
               </div>
             )
           })
@@ -43,4 +38,15 @@ export default class Selection extends Component {
       </div>
     )
   }
+}
+
+Selection.propTypes = {
+  items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  selectedItems: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  share: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
+  totals: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
+  hasVoted: React.PropTypes.bool.isRequired,
+  showStats: React.PropTypes.bool.isRequired,
+  shareMultiplier: React.PropTypes.number.isRequired,
+  selectProject: React.PropTypes.func.isRequired
 }

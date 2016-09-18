@@ -12,18 +12,18 @@ let voteInitialState = {
 export default function vote(state = voteInitialState, action) {
   switch (action.type) {
     case SUBMIT_VOTE:
-      return Object.assign({}, state,
-        { hasVoted: true }
-      )
+      return {
+        ...state,
+        hasVoted: true
+      }
 
     case SHOW_STATS:
-      return Object.assign({}, state,
-        {
-          showStats: true,
-          share: action.payload.share,
-          totals: action.payload.totals
-        }
-      )
+      return {
+        ...state,
+        showStats: true,
+        share: action.payload.share,
+        totals: action.payload.totals
+      }
 
     case USER_LOGGED_IN:
       let fbResponse = action.payload.fbResponse
@@ -34,14 +34,13 @@ export default function vote(state = voteInitialState, action) {
         name: fbResponse.name,
         picture: fbResponse.picture
       }
-      return Object.assign({}, state,
-        {
-          hasLoggedIn: isValidResponse,
-          fbResponse: customFbResponse
-        }
-      )
+      return {
+        ...state,
+        hasLoggedIn: isValidResponse,
+        fbResponse: customFbResponse
+      }
 
     default:
-      return state;
+      return state
   }
 }

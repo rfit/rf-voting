@@ -1,8 +1,16 @@
 module.exports.indexHandler = function* () {
-  yield this.render('index')
+  let indexData = {
+    'howtoread': "thispropertyintemplate"
+  }
+  if (require('config').get('serverMode') === 'production' ) {
+    yield this.render('index', indexData) // TODO figure out why not working in template and we have to use this current solution..
+  } else {
+    yield this.render('index-dev')
+  }
+
 }
 
 module.exports.projectHandler = function* () {
-  const testSet1 = require('./testSet1.json');
-  this.body = testSet1
+  let set = yield require('./testSet1.json')
+  this.body = set
 }
