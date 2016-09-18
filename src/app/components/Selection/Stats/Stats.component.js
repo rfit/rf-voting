@@ -6,6 +6,8 @@ import s from './Stats.css'
 export default class Stats extends React.Component {
   render() {
     let { share, total, shareMultiplier } = this.props
+    total = total || 0
+    share = share || 0
     let sharePercentage = (share * 100).toFixed(1)
     let shareWidth = (share * 100 * shareMultiplier).toFixed(0) + '%'
     return (

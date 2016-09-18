@@ -1,6 +1,6 @@
 
 .baseBlock {
-    composes: font-large from '../../../typography.css';
+    composes: font-large from '../../styling/typography.css';
 
     background-color: white;
     border-radius: 4px;
@@ -15,7 +15,6 @@
 
 .row-effect:hover {
     color: #ed7303;
-    /*font-size: 3.2vh;*/
     transform: scale(1.02);
 }
 
@@ -26,7 +25,6 @@
 .chosen-effect:hover {
     border-color: #ed7303;
     color: white;
-    /*font-size: 3.3vh;*/
     transform: scale(1.02);
 }
 
@@ -45,7 +43,7 @@
 }
 
 .header {
-    composes: font-large from '../../../typography.css';
+    composes: font-large from '../../styling/typography.css';
 
     overflow: hidden;
     text-transform: uppercase;

@@ -58,4 +58,4 @@ let development = {
 // TODO figure out frontend config for deployment; or get app id from backend?
 // rf voting app id: 1746188185654658
 // localtest fb app id: 690824064405896
-module.exports = development // TODO make a webpack.config.production.js ??
+module.exports = production // TODO make a webpack.config.production.js ??

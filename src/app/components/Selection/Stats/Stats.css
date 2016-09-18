@@ -12,7 +12,7 @@
 }
 
 .stat {
-    composes: font-base from '../../../typography.css';
+    composes: font-base from '../../styling/typography.css';
 
     z-index: 10;
     text-align: left;

@@ -54,7 +54,7 @@
 }
 
 .vote-animate {
-    animation: vote-frames 3s infinite cubic-bezier(0.43, 0.6, 0.03, 1.03);
+    animation: vote-frames 2.5s infinite ease;
 }
 
 
@@ -69,7 +69,7 @@
 }
 
 .voteButtonText {
-    composes: font-large from '../../typography.css';
+    composes: font-base from '../styling/typography.css';
 
     display: inline-block;
     text-align: center;
@@ -77,14 +77,16 @@
 
 /* FB */
 @keyframes fb-frames {
-    0%   {border-color: white;}
-    20%   {border-color: #4c69ba;}
-    90%   {border-color: white;}
+    0%   {border-color: #ed7303;}
+    30%   {border-color: white;}
+    50%   {border-color: #4c69ba;}
+    70%   {border-color: white;}
+    100%   {border-color: #ed7303;}
 
 }
 
 .fbComp {
-    composes: font-base from '../../typography.css';
+    composes: font-base from '../styling/typography.css';
 
     background-color: #4c69ba;
     border-color: #4c69ba;
@@ -97,7 +99,7 @@
 }
 
 .fb-animate {
-    animation: fb-frames 3s infinite linear;
+    animation: fb-frames 3.5s infinite ease;
 }
 
 .fbLoginActive {
@@ -114,7 +116,7 @@
 }
 
 .fbPic {
-    margin-left: 3vh;
+    margin-left: 2vw;
     vertical-align: middle;
     border-radius: 50%;
     transform: scale(1.05);

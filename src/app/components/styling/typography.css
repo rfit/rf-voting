@@ -3,7 +3,7 @@
 }
 
 .size-base {
-    font-size: 3vh;
+    font-size: 3.2vh;
     letter-spacing: 0.30vh;
 }
 
@@ -31,3 +31,4 @@
     composes: size-huge family-base;
 
 }
+

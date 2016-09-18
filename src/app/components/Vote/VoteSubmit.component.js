@@ -35,7 +35,7 @@ export default class VoteSubmit extends React.Component {
         </div>
         <div className={s.right}>
           <ToggleDisplay show={hasLoggedIn}>
-            <button className={s.fbLogin} onClick={() => hasLoggedIn && hasVoted && userLoggedInAsync(fbResponse)}>
+            <button className={s.fbLogin}>
               <div className={s.fbText}>
                 <div>
                   <i>
