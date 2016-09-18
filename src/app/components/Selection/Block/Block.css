@@ -1,0 +1,53 @@
+
+.baseBlock {
+    composes: font-large from '../../../typography.css';
+
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    height: 9vh;
+    margin-bottom: 0.6vh;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+}
+
+.row-effect:hover {
+    color: #ed7303;
+    /*font-size: 3.2vh;*/
+    transform: scale(1.02);
+}
+
+.row {
+    composes: baseBlock row-effect;
+}
+
+.chosen-effect:hover {
+    border-color: #ed7303;
+    color: white;
+    /*font-size: 3.3vh;*/
+    transform: scale(1.02);
+}
+
+.rowChosen {
+    composes: baseBlock chosen-effect;
+
+    background-color: #ed7303;
+    color: white;
+}
+
+.flex {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    composes: font-large from '../../../typography.css';
+
+    overflow: hidden;
+    text-transform: uppercase;
+}
+

@@ -1,4 +1,4 @@
-import {SET_PROJECTS, SELECT_PROJECT, SET_SELECTED_PROJECTS} from '../constants';
+import { SET_PROJECTS, SELECT_PROJECT, SET_SELECTED_PROJECTS } from '../constants';
 
 function resultingSelectedItems(state, itemId) { // Toggle selected projects emulating a stack (toggling most recent selection if user indicates a fourth choice)
   let selectedItems = []

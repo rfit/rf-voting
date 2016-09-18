@@ -22,7 +22,7 @@ export default class VoteSubmit extends React.Component {
     buttonLbl = hasVoted ? 'Voting...' : buttonLbl
     buttonLbl = hasLoggedIn && hasVoted ? 'Thank you for voting!' : buttonLbl
 
-    let buttonCssClass = hasVoted ? s.voteButtonActivated : ( canVote ? s.voteButtonEnabled : s.voteButton )
+    let buttonCssClass = hasVoted ? s.voteButtonFinished : ( canVote ? s.voteButtonEnabled : s.voteButton )
     let voteLbl = hasVoted ? 'Voted' : 'Voting'
     return (
       <div className={s.root}>
@@ -37,16 +37,22 @@ export default class VoteSubmit extends React.Component {
           <ToggleDisplay show={hasLoggedIn}>
             <button className={s.fbLogin} onClick={() => hasLoggedIn && hasVoted && userLoggedInAsync(fbResponse)}>
               <div className={s.fbText}>
-                <i>
-                  <FontAwesome name='facebook' size='lg' className={s.fbIcon}/>
-                </i>
-                <span>{voteLbl} as {fbName}</span>
+                <div>
+                  <i>
+                    <FontAwesome name='facebook' className={s.fbIcon}/>
+                  </i>
+                </div>
+                <div>
+                  {voteLbl} as {fbName}
+                </div>
+                <div>
+                  <img className={s.fbPic} src={fbPictureSrc} />
+                </div>
               </div>
-              <img className={s.fbPic} src={fbPictureSrc} />
             </button>
           </ToggleDisplay>
           <ToggleDisplay show={!hasLoggedIn}>
-            <FacebookLogin cssClass={s.fbLogin} appId='1746188185654658' autoLoad={true} fields='name,email,picture' callback={userLoggedInAsync} icon='fa-facebook' />
+            <FacebookLogin cssClass={s.fbLoginActive} appId='690824064405896' autoLoad={true} fields='name,email,picture' callback={userLoggedInAsync} icon='fa-facebook' />
           </ToggleDisplay>
         </div>
       </div>

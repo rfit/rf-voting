@@ -1,6 +1,6 @@
 import React from 'react'
-import Block from './Block.component'
-import Stats from './Stats.component'
+import Block from './Block/Block.component'
+import Stats from './Stats/Stats.component'
 import ToggleDisplay from 'react-toggle-display';
 
 import s from './Selection.css'
@@ -22,7 +22,8 @@ export default class Selection extends React.Component {
             return (
               <div key={id}>
                 <div className={s.left}>
-                  <Block label={name} isSelected={selectedItems.includes(id)} clickHandler={!hasVoted ? () => selectProject(id) : () => {}} />
+                  <Block label={name} isSelected={selectedItems.includes(id)}
+                         clickHandler={(e) => !hasVoted && selectProject(id)}/>
                 </div>
                 <ToggleDisplay show={showStats}>
                   <div className={s.right}>

@@ -1,0 +1,52 @@
+.root {
+    display: inline-block;
+    background-color: white;
+    width: 98%;
+    margin-left: 1.2vw;
+    border-radius: 4px;
+    position: relative;
+}
+
+.flex {
+    height: 9vh;
+}
+
+.stat {
+    composes: font-base from '../../../typography.css';
+
+    z-index: 10;
+    text-align: left;
+    display: block;
+
+    position: absolute;
+}
+
+.stat-effect:hover {
+    color: white;
+}
+
+.statTL {
+    composes: stat stat-effect;
+
+    left: 0.5vw;
+    top: 0.3vh;
+}
+
+.statBL {
+    composes: stat stat-effect;
+
+    left: 0.5vw;
+    bottom: 0.3vh;
+}
+
+.share {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    background-color: #ed7303;
+    height: 100%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}

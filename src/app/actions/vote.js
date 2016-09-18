@@ -43,7 +43,6 @@ export function userLoggedInAsync( fbResponse ) {
       .then(statusCheck)
       .then(jsonParse)
       .then((data => {
-        console.log(data)
         if( data.selectedItems && data.share && data.totals ) {
           dispatch(submitVote(data.selectedItems)) // Internal version, render submitted voted (does not send to backend)
           dispatch(setSelectedProjects(data.selectedItems))

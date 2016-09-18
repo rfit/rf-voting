@@ -1,84 +1,126 @@
 .root {
-  width: 100%;
+    width: 100%;
 }
 
-.left { /* TODO take widths from variables ?*/
-  width: 60%;
-  display: inline-block;
-  vertical-align: text-top;
-  text-align: center;
+.left {
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+    width: 60%;
 }
+
 .right {
-  width: 37%;
-  display: inline-block;
-  vertical-align: text-top;
-  text-align: center;
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+    width: 37%;
+}
+
+.voteBase {
+    display: inline-block;
+    background-color: #fafafa;
+    border: 6px solid transparent;
+    border-radius: 6px;
+    height: 14vh;
+    overflow: visible;
+    text-transform: uppercase;
+    width: 90%;
+}
+
+.vote-effect:hover {
+    color: #ed7303;
+    border-color: #ed7303;
+
 }
 
 .voteButton {
-    display: inline-block;
-    width: 90%;
-    height: 70px;
-    overflow: visible;
-    border-radius: 4px;
-    border: 4px solid transparent;
-    background-color: #fafafa;
-    font-size: 1em;
-    text-transform: uppercase;
-    font-weight: 300;
+    composes: voteBase vote-effect;
 }
 
-.voteButton span {
-    text-transform: uppercase;
+
+@keyframes vote-frames {
+    0%   {
+        border-color: white;
+        color: black;
+    }
+    50% {
+        border-color: #ed7303;
+        color: #ed7303;
+    }
+    100%   {
+        border-color: white;
+        color: black;
+    }
 }
 
-.voteButtonActivated { /* TODO make hover work with this..*/
-    composes: voteButton;
-
-    color: #ed7303;
-    border-color: #ed7303;
+.vote-animate {
+    animation: vote-frames 3s infinite cubic-bezier(0.43, 0.6, 0.03, 1.03);
 }
+
 
 .voteButtonEnabled {
-    composes: voteButton;
+    composes: voteBase vote-effect vote-animate;
 
     cursor: pointer;
+}
+
+.voteButtonFinished {
+    composes: voteBase vote-animate;
 }
 
 .voteButtonText {
-    width: 70%;
+    composes: font-large from '../../typography.css';
+
     display: inline-block;
     text-align: center;
 }
 
-.fbLogin { /* As Vote Button */
-    position: relative;
-    display: inline-block;
-    width: 90%;
-    height: 70px;
-    overflow: visible;
-    border-radius: 4px;
-    font-size: 1em;
-    text-transform: uppercase;
-    font-weight: 300;
-    border: 4px solid #4c69ba;
+/* FB */
+@keyframes fb-frames {
+    0%   {border-color: white;}
+    20%   {border-color: #4c69ba;}
+    90%   {border-color: white;}
+
+}
+
+.fbComp {
+    composes: font-base from '../../typography.css';
+
     background-color: #4c69ba;
-    font-family: Helvetica,sans-serif;
+    border-color: #4c69ba;
     color: #fff;
     cursor: pointer;
 }
-.fbLogin i {
-    margin-right: calc(.34435vw + 3.38843px);
-    vertical-align: top;
+
+.fbLogin {
+    composes: voteBase fbComp;
 }
+
+.fb-animate {
+    animation: fb-frames 3s infinite linear;
+}
+
+.fbLoginActive {
+    composes: fbLogin fb-animate;
+}
+
 .fbText {
-    width: 60%;
-    display: inline-block;
-    text-align: center;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
 }
 
 .fbPic {
-    right: 12px;
-    top: 6px;
-    position: absolute;
+    margin-left: 3vh;
+    vertical-align: middle;
+    border-radius: 50%;
+    transform: scale(1.05);
+}
+
+.fbLogin i { /* Matches FA icon */
+    margin-right: 1.5vw;
+    vertical-align: middle;
 }

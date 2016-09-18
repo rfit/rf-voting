@@ -11,12 +11,14 @@ export default class Stats extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.share} style={{width: shareWidth}} />
-        <div className={s.text}>
-          {total + ' '}
-          <FontAwesome name='thumbs-o-up' size='lg'/>
-        </div>
-        <div className={s.text}>
-          {sharePercentage} {'%'}
+        <div className={s.flex}>
+          <div className={s.statTL}>
+            {total + ' '}
+            <FontAwesome name='thumbs-o-up' size='lg'/>
+          </div>
+          <div className={s.statBL}>
+            {sharePercentage} {'%'}
+          </div>
         </div>
       </div>
     )
