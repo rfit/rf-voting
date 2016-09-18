@@ -52,7 +52,7 @@ export default class VoteSubmit extends React.Component {
             </button>
           </ToggleDisplay>
           <ToggleDisplay show={!hasLoggedIn}>
-            <FacebookLogin cssClass={s.fbLoginActive} appId='690824064405896' autoLoad={true} fields='name,email,picture' callback={userLoggedInAsync} icon='fa-facebook' />
+            <FacebookLogin cssClass={s.fbLoginActive} appId='1746188185654658' autoLoad={true} fields='name,email,picture' callback={userLoggedInAsync} icon='fa-facebook' />
           </ToggleDisplay>
         </div>
       </div>
