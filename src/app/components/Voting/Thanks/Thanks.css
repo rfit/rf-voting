@@ -1,0 +1,12 @@
+.root {
+    width: 100%;
+}
+
+.base {
+    composes: font-base from '../../styling/typography.css';
+    composes: base from '../Submit/Submit.css';
+
+    background-color: #4c69ba;
+    border-color: #4c69ba;
+    color: #fff;
+}

@@ -1,0 +1,60 @@
+.root {
+    width: 100%;
+}
+
+.base {
+    display: inline-block;
+    background-color: #fafafa;
+    border: 6px solid transparent;
+    border-radius: 6px;
+    height: 14vh;
+    overflow: visible;
+    text-transform: uppercase;
+    width: 90%;
+}
+
+.hover-effect:hover {
+    color: #ed7303;
+    border-color: #ed7303;
+
+}
+
+.informing {
+    composes: base hover-effect;
+}
+
+@keyframes rf-yinyang {
+    0%   {
+        border-color: white;
+        color: black;
+    }
+    50% {
+        border-color: #ed7303;
+        color: #ed7303;
+    }
+    100%   {
+        border-color: white;
+        color: black;
+    }
+}
+
+.animate-effect {
+    animation: rf-yinyang 3.5s infinite ease;
+}
+
+.enabled {
+    composes: base hover-effect animate-effect;
+
+    cursor: pointer;
+}
+
+.finished {
+    composes: base animate-effect;
+}
+
+.text {
+    composes: font-base from '../../styling/typography.css';
+
+    display: inline-block;
+    text-align: center;
+}

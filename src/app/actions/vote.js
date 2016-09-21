@@ -1,4 +1,4 @@
-import { SUBMIT_VOTE, SHOW_STATS, USER_LOGGED_IN } from '../constants';
+import { SUBMIT_VOTE, SHOW_STATS, USER_LOGGED_IN, TOGGLE_THANKS } from '../constants';
 import { setSelectedProjects } from './selection'
 import fetch from 'isomorphic-fetch'
 import { statusCheck, jsonParse, requestFailed } from './async.utils'
@@ -28,6 +28,13 @@ export function userLoggedIn(fbResponse ) {
     payload: {
       fbResponse
     },
+  };
+}
+
+export function toggleThanks( ) {
+  return {
+    type: TOGGLE_THANKS,
+    payload: {},
   };
 }
 
