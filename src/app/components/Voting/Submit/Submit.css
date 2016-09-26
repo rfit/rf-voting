@@ -51,6 +51,8 @@
 
 .finished {
     composes: base animate-effect;
+    
+    cursor: pointer;
 }
 
 .text {

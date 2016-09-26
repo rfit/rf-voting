@@ -7,7 +7,7 @@ import s from './Login.css'
 
 export default class Login extends React.Component {
   render() {
-    let appId = '690824064405896' // TODO get from backend on mount?   1746188185654658
+    let appId = '1746188185654658' // [Prod: 1746188185654658]   [Dev: 690824064405896]
     let { hasVoted, hasLoggedIn, username, picture, onUserLogin } = this.props
 
     return (

@@ -14,7 +14,6 @@ module.exports.ensureVoteTalliesExist = function* (next) {
     voteTalliesInitialized = true
   }
   if(!VoteTally.allTalliesExist()) {
-    //TODO make check and throw 500 if non existing?
     this.status = 500
     console.log("ERROR: Could not find all tallies. Restart this server to initialize with defaults or manually correct.")
   } else {

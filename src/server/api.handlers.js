@@ -85,7 +85,7 @@ module.exports.voteHandler = function* () {
     let fbResponse = validBody['fbResponse']
     let user = yield Vote.findOneAsync({userID: fbResponse.userID})
     if(!user) {
-        //TODO here we assume valid facebook user, but this is only guaranteed for requests made by the frontend (i.e. poll spamming is possible by supplying new unique user info)
+        // Here we assume valid facebook user, but this is only guaranteed for requests made by the frontend (i.e. poll spamming is possible by supplying new unique user info)
         let newVoteParams = makeNewVote(items, fbResponse)
         let newVote = new Vote(newVoteParams)
         yield newVote.saveAsync()
