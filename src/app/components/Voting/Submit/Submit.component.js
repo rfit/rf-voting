@@ -16,7 +16,7 @@ export default class Submit extends React.Component {
     let buttonCssClass = hasVoted ? s.finished : ( canVote ? s.enabled : s.informing )
     return (
       <div className={s.root}>
-        <button className={buttonCssClass} onClick={() => canVote && validClickHandler()}>
+        <button className={buttonCssClass} onClick={validClickHandler}>
           <div className={s.text}>
             <span>{buttonLbl}</span>
           </div>
