@@ -1,0 +1,40 @@
+.root {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 50vw;
+    z-index: 500;
+}
+
+.base {
+    background-color: white;
+    border: 4px solid black;
+    border-radius: 4px;
+    color: black;
+    padding: 4%;
+}
+
+.toggle-effect:hover {
+    transform: scale(1.2);
+}
+
+.toggle {
+    composes: toggle-effect;
+
+    position: absolute;
+    bottom: 26px;
+    right: 26px;
+    z-index: 501;
+
+    color: #ed7303;
+    cursor: pointer;
+}
+
+.thanks {
+    composes: font-large from '../../styling/typography.css';
+
+}
+
+.link {
+    composes: link from '../../styling/typography.css';
+}

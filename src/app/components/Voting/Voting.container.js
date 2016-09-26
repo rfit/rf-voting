@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
-import { getProjectsAsync } from '../../actions/selection'
-import { submitVoteAsync, userLoggedInAsync } from '../../actions/vote'
-import VoteSubmit from './VoteSubmit.component'
+import { submitVoteAsync, userLoggedInAsync, toggleThanks } from '../../actions/vote'
+import Vote from './Vote.component'
 
 const mapStateToProps = (state, ownProps) => {
   let fbResponse = state.vote.fbResponse
@@ -12,27 +11,27 @@ const mapStateToProps = (state, ownProps) => {
     fbResponse: fbResponse,
     fbName: fbResponse['name'] ? fbResponse['name'] : '',
     fbPictureSrc: typeof fbResponse['picture'] === 'object' ? fbResponse['picture']['data']['url'] : '',
-
+    thanksOpen: state.vote.thanksOpen,
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    'getProjectsAsync': () => {
-      dispatch(getProjectsAsync())
-    },
     'submitVoteAsync': (selectedItems, fbResponse) => {
       dispatch(submitVoteAsync(selectedItems, fbResponse))
     },
     'userLoggedInAsync': (fbResponse) => {
       dispatch(userLoggedInAsync(fbResponse))
+    },
+    'toggleThanks': () => {
+      dispatch(toggleThanks())
     }
   }
 }
 
-const Vote = connect(
+const Voting = connect(
   mapStateToProps,
   mapDispatchToProps
-)(VoteSubmit)
+)(Vote)
 
-export default Vote
+export default Voting

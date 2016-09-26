@@ -32,3 +32,11 @@
 
 }
 
+.link, .link:visited, .link:active {
+    color: #ed7303;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

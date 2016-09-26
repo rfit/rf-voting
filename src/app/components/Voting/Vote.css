@@ -1,0 +1,21 @@
+.root {
+    width: 100%;
+}
+
+.left {
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+    width: 60%;
+}
+
+.right {
+    display: inline-block;
+    vertical-align: text-top;
+    text-align: center;
+    width: 37%;
+}
+
+.relative {
+    position: relative;
+}

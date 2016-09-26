@@ -1,4 +1,4 @@
-import { SUBMIT_VOTE, SHOW_STATS, USER_LOGGED_IN } from '../constants';
+import { SUBMIT_VOTE, SHOW_STATS, USER_LOGGED_IN, TOGGLE_THANKS } from '../constants';
 
 let voteInitialState = {
   hasVoted: false,
@@ -6,7 +6,8 @@ let voteInitialState = {
   showStats: false,
   fbResponse: {},
   share: {},
-  totals: {}
+  totals: {},
+  thanksOpen: false,
 }
 
 export default function vote(state = voteInitialState, action) {
@@ -14,7 +15,8 @@ export default function vote(state = voteInitialState, action) {
     case SUBMIT_VOTE:
       return {
         ...state,
-        hasVoted: true
+        hasVoted: true,
+        thanksOpen: true
       }
 
     case SHOW_STATS:
@@ -38,6 +40,12 @@ export default function vote(state = voteInitialState, action) {
         ...state,
         hasLoggedIn: isValidResponse,
         fbResponse: customFbResponse
+      }
+
+    case TOGGLE_THANKS:
+      return {
+        ...state,
+        thanksOpen: !state.thanksOpen
       }
 
     default:

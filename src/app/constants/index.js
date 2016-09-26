@@ -5,3 +5,4 @@ export const SET_SELECTED_PROJECTS = 'SET_SELECTED_PROJECTS';
 export const SUBMIT_VOTE = 'SUBMIT_VOTE';
 export const SHOW_STATS = 'SHOW_STATS';
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
+export const TOGGLE_THANKS = 'TOGGLE_THANKS';
