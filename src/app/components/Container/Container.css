@@ -2,19 +2,18 @@ html {
     font-family: "rf4000", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
     text-rendering: optimizeLegibility;
     background: #2e2e2e;
+    font-size: 16px;
 }
 
 @media screen {
     body {
         margin: 1vw;
-        font-size: 100%;
     }
 }
 
 @media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
     body {
         margin: 1vw;
-        font-size: 55%;
     }
 }
 
@@ -22,14 +21,12 @@ html {
 @media screen and (min-device-height: 667px) and (min-device-width: 375px) {
     body {
         margin: 1vw;
-        font-size: 60%;
     }
 }
 
 @media screen and (min-width: 1024px){
     body {
         margin: 2vw;
-        font-size: 80%;
     }
 }
 
