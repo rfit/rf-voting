@@ -51,13 +51,14 @@
 
 .finished {
     composes: base animate-effect;
-    
+
     cursor: pointer;
 }
 
 .text {
     composes: font-base from '../../styling/typography.css';
 
+    font-size: 1.7em;
     display: inline-block;
     text-align: center;
 }

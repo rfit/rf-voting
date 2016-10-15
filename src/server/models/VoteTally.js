@@ -29,12 +29,12 @@ VoteTallySchema.statics.updateShareOfVote = function * updateShareOfVote() {
   console.log('*** Updated share of vote. Sum of shares: ', shareSum, ' Total votes:', total)
 }
 
-const testSet1 = require('./../testSet1.json');
+const projectSet = require('./../projects.json');
 
 VoteTallySchema.statics.initializeTallies = function* () {
   let voteTalliesCreated = 0
-  for (let i = 0; i < testSet1.length; i++) {
-    let project = testSet1[i]
+  for (let i = 0; i < projectSet.length; i++) {
+    let project = projectSet[i]
     let existingVoteTally = yield VoteTally.findOneAsync({itemId: project.id})
     if (!existingVoteTally) {
       let newVoteTally = new VoteTally({
@@ -55,9 +55,9 @@ VoteTallySchema.statics.initializeTallies = function* () {
 VoteTallySchema.statics.allTalliesExist = function* () {
   let voteTalliesMissing = false
   console.log(new Date().toString())
-  for (let i = 0; i < testSet1.length; i++) {
-    let project = testSet1[i]
-    let existingVoteTally = yield VoteTally.findOneAsync({itemId: project.id}) // TODO Use collection of ids from testSet1?
+  for (let i = 0; i < projectSet.length; i++) {
+    let project = projectSet[i]
+    let existingVoteTally = yield VoteTally.findOneAsync({itemId: project.id}) // TODO Use collection of ids from projectSet?
     if (!existingVoteTally) {
       voteTalliesMissing = true
     }

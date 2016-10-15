@@ -1,6 +1,6 @@
 
 .baseBlock {
-    composes: font-large from '../../styling/typography.css';
+    /*composes: font-project from '../../styling/typography.css';*/
 
     background-color: white;
     border-radius: 4px;
@@ -43,7 +43,11 @@
 }
 
 .header {
-    composes: font-large from '../../styling/typography.css';
+    composes: family-base from '../../styling/typography.css';
+
+    padding: 1%;
+    font-size: 1.4em;
+    letter-spacing: 0.13em;
 
     overflow: hidden;
     text-transform: uppercase;

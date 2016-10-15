@@ -21,18 +21,17 @@ export default class Vote extends React.Component {
     let validClickBeforeVoting = () => {canVote && submitVoteAsync(selectedItems, fbResponse)}
     let onValidClick = hasVoted ? toggleThanks : validClickBeforeVoting
 
-    // TODO a) make thanks take up 1/3 of screen or so and shrink the rest b) make popout animation that can be closed and also opens on reload
     return (
       <div className={s.root}>
         <div className={s.left}>
           <Submit selectionIsValid={hasSelectedThree} hasVoted={hasVoted} hasLoggedIn={hasLoggedIn} validClickHandler={onValidClick} />
         </div>
-        <span className={s.relative}>
-          <Thanks isShown={hasVoted && thanksOpen} closeHandler={toggleThanks} />
-        </span>
         <div className={s.right}>
           <Login hasLoggedIn={hasLoggedIn} hasVoted={hasVoted} username={fbName} picture={fbPictureSrc} onUserLogin={userLoggedInAsync} />
         </div>
+        <span className={s.relative}>
+          <Thanks isShown={hasVoted && thanksOpen} closeHandler={toggleThanks} />
+        </span>
       </div>
     )
   }

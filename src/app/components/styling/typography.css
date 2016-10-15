@@ -3,33 +3,12 @@
 }
 
 .size-base {
-    font-size: 3.2vh;
-    letter-spacing: 0.30vh;
-}
-
-.size-large {
-    font-size: 4vh;
-    letter-spacing: 0.25vh;
-}
-
-.size-huge {
-    font-size: 5vh;
-    letter-spacing: 0.35vh;
+    font-size: 1.4em;
+    letter-spacing: 0.06em;
 }
 
 .font-base {
     composes: size-base family-base;
-
-}
-
-.font-large {
-    composes: size-large family-base;
-
-}
-
-.font-huge {
-    composes: size-huge family-base;
-
 }
 
 .link, .link:visited, .link:active {

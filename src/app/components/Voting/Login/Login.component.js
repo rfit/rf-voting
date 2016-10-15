@@ -10,18 +10,21 @@ export default class Login extends React.Component {
     let appId = '1746188185654658' // [Prod: 1746188185654658]   [Dev: 690824064405896]
     let { hasVoted, hasLoggedIn, username, picture, onUserLogin } = this.props
 
+    let firstName = username.split(' ')[0]
     return (
       <div className={s.root}>
         <ToggleDisplay show={hasLoggedIn}>
           <button className={s.base}>
             <div className={s.text}>
+              <ToggleDisplay show={!hasVoted}>
+                <div>
+                  <i>
+                    <FontAwesome name='facebook'/>
+                  </i>
+                </div>
+              </ToggleDisplay>
               <div>
-                <i>
-                  <FontAwesome name='facebook'/>
-                </i>
-              </div>
-              <div>
-                {hasVoted ? 'Voted' : 'Voting'} as {username}
+                {hasVoted ? 'Thanks ' + firstName + '!' : 'Voting as ' + username}
               </div>
               <div>
                 <img className={s.pic} src={picture} />

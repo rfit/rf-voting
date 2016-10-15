@@ -11,6 +11,6 @@ module.exports.indexHandler = function* () {
 }
 
 module.exports.projectHandler = function* () {
-  let set = yield require('./testSet1.json')
+  let set = yield require('./projects.json')
   this.body = set
 }

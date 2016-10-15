@@ -1,8 +1,8 @@
 .root {
     position: absolute;
-    bottom: -8px;
-    right: -8px;
-    width: 50vw;
+    bottom: 2vh;
+    right: 5vw;
+    width: 80vw;
     z-index: 500;
 }
 
@@ -11,7 +11,8 @@
     border: 4px solid black;
     border-radius: 4px;
     color: black;
-    padding: 4%;
+    padding: 3%;
+    padding-bottom: 1px;
 }
 
 .toggle-effect:hover {
@@ -22,8 +23,8 @@
     composes: toggle-effect;
 
     position: absolute;
-    bottom: 26px;
-    right: 26px;
+    top: 2em;
+    right: 2em;
     z-index: 501;
 
     color: #ed7303;
@@ -31,10 +32,26 @@
 }
 
 .thanks {
-    composes: font-large from '../../styling/typography.css';
+    composes: family-base from '../../styling/typography.css';
 
+    font-size: 1.6em;
+    letter-spacing: 0.07em;
 }
 
 .link {
     composes: link from '../../styling/typography.css';
+}
+
+.signature {
+    font-style: italic;
+}
+
+.nonprofit {
+    z-index: 499;
+}
+
+.nonprofit img {
+    float: right;
+    max-height: 5em;
+    max-width: 22em;
 }

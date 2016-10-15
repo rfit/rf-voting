@@ -2,7 +2,6 @@
     width: 100%;
 }
 
-/* TODO move keyframes to styling */
 @keyframes rf-fb {
     0%   {border-color: #ed7303;}
     30%   {border-color: white;}

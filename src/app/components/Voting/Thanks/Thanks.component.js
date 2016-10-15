@@ -12,7 +12,7 @@ export default class Thanks extends React.Component {
         <ToggleDisplay show={isShown}>
           <div className={s.base}>
             <div className={s.toggle} onClick={closeHandler}>
-              <FontAwesome name='times-circle' size='lg' />
+              <FontAwesome name='times-circle' size='2x' />
             </div>
             <div className={s.thanks}>
               <p>
@@ -24,12 +24,16 @@ export default class Thanks extends React.Component {
                   Your Donations right here
                 </a>
                 , and make sure to have your say next year!
+                <span className={s.nonprofit}>
+                  <img src='RF16_NON_PROFIT_logo_canopy_orange_RGB_150915.png' />
+                </span>
               </p>
               <p>
                 Best Regards
-              </p>
-              <p>
+                <br/><br/>
+                <span className={s.signature}>
                 Roskilde Festival Society
+              </span>
               </p>
             </div>
           </div>

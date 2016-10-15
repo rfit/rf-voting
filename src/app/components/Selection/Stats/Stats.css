@@ -12,7 +12,10 @@
 }
 
 .stat {
-    composes: font-base from '../../styling/typography.css';
+    composes: family-base from '../../styling/typography.css';
+
+    font-size: 1.4em;
+    letter-spacing: 0.062em;
 
     z-index: 10;
     text-align: left;
@@ -28,15 +31,15 @@
 .statTL {
     composes: stat stat-effect;
 
-    left: 0.5vw;
-    top: 0.3vh;
+    left: 1vw;
+    top: 1vh;
 }
 
 .statBL {
     composes: stat stat-effect;
 
-    left: 0.5vw;
-    bottom: 0.3vh;
+    left: 1vw;
+    bottom: 1vh;
 }
 
 .share {

@@ -1,6 +1,6 @@
 const {sprintf, vsprintf} = require("sprintf-js")
 
-const testSet1 = require('./testSet1.json')
+const projectSet = require('./projects.json')
 
 function isValidFbResponse(fbResponse) {
   if (typeof fbResponse !== 'object')
@@ -11,7 +11,7 @@ function isValidFbResponse(fbResponse) {
 
 function isValidItems(items) {
   let itemIdsExist = items.every((itemId) => {
-    return testSet1.some((project) => project.id === itemId)
+    return projectSet.some((project) => project.id === itemId)
   })
   return itemIdsExist && items.length === 3
 }
@@ -21,9 +21,9 @@ const Vote = require('./models/Vote')
 
 let testUser1Body = {
   items: [
-    testSet1[0].id,
-    testSet1[1].id,
-    testSet1[2].id
+    projectSet[0].id,
+    projectSet[1].id,
+    projectSet[2].id
   ],
   fbResponse: {
     name: 'votingUser1',
