@@ -2,15 +2,39 @@
     margin-bottom: 13em;
 }
 
+.root > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5em;
+}
+
+.root > div > span {
+    display: block;
+    flex: 1;
+    height: 4em;
+    margin: 0.4em 0;
+}
+
 .left {
-    width: 100%;
+    flex: 1;
     vertical-align: text-top;
     text-align: center;
 }
 
 .right {
-    width: 37%;
-    display: inline-block;
+    display: block;
     vertical-align: text-top;
     text-align: center;
+    height: 100%;
+}
+
+@media all  and (min-width: 31.25em){
+    .root > div {
+        flex-direction: row;
+    }
+
+    .root > div > span {
+        margin: 0 auto;
+        height: 4.6em;
+    }
 }
