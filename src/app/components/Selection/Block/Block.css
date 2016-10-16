@@ -44,23 +44,9 @@
 
 .header {
     composes: family-base from '../../styling/typography.css';
+    composes: size-base from '../../styling/typography.css';
 
     padding: 1em;
-    font-size: 1.1em;
-    letter-spacing: 0.13em;
-
     overflow: hidden;
     text-transform: uppercase;
-}
-
-@media all and (min-width: 28.75em) {
-    .header {
-        font-size: 1.3em;
-    }
-}
-
-@media all and (min-width: 46.25em) {
-    .header {
-        font-size: 1.5em;
-    }
 }
