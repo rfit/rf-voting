@@ -57,9 +57,7 @@
 }
 
 .text {
-    composes: font-base from '../../styling/typography.css';
-
-    font-size: 1.7em;
+    composes: font-base size-base from '../../styling/typography.css';
     display: inline-block;
     text-align: center;
 }

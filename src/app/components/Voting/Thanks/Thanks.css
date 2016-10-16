@@ -33,9 +33,7 @@
 
 .thanks {
     composes: family-base from '../../styling/typography.css';
-
-    font-size: 1.6em;
-    letter-spacing: 0.07em;
+    composes: size-base from '../../styling/typography.css';
 }
 
 .link {
