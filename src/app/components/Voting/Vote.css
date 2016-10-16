@@ -1,21 +1,33 @@
 .root {
+    display: flex;
+    flex-direction: column;
+}
+
+.left, .right {
     width: 100%;
 }
 
 .left {
-    display: inline-block;
-    vertical-align: text-top;
-    text-align: center;
-    width: 60%;
+    flex: 1;
 }
 
 .right {
-    display: inline-block;
-    vertical-align: text-top;
-    text-align: center;
-    width: 37%;
+    flex: 1;
+    margin-top: 1em;
 }
 
 .relative {
     position: relative;
 }
+
+@media all  and (min-width: 31em) {
+    .root {
+        flex-direction: row;
+    }
+
+    .right {
+        margin-top: 0;
+        margin-left: 1em;
+    }
+}
+
