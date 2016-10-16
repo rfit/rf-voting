@@ -1,11 +1,9 @@
 .root {
     margin-bottom: 5vh;
-    height: 70vh;
 }
 
 .left {
-    width: 60%;
-    display: inline-block;
+    width: 100%;
     vertical-align: text-top;
     text-align: center;
 }
