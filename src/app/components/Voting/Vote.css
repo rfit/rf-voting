@@ -1,21 +1,41 @@
 .root {
+    position: fixed;
+    bottom: 0;
+    background: rgba(161, 78, 2, 0.9);
+    padding: 1em 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 45em;
+    margin: 0 auto;
+}
+
+.left, .right {
     width: 100%;
 }
 
 .left {
-    display: inline-block;
-    vertical-align: text-top;
-    text-align: center;
-    width: 60%;
+    flex: 1;
 }
 
 .right {
-    display: inline-block;
-    vertical-align: text-top;
-    text-align: center;
-    width: 37%;
+    flex: 1;
+    margin-top: 1em;
 }
 
-.relative {
-    position: relative;
+@media all  and (min-width: 31em) {
+    .wrapper {
+        flex-direction: row;
+    }
+
+    .right {
+        margin-top: 0;
+        margin-left: 1em;
+    }
 }
+

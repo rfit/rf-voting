@@ -1,6 +1,8 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
 
+import ToggleDisplay from 'react-toggle-display';
+
 import s from './Stats.css'
 
 export default class Stats extends React.Component {
@@ -13,15 +15,13 @@ export default class Stats extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.share} style={{width: shareWidth}} />
-        <div className={s.flex}>
           <div className={s.statTL}>
             {total + ' '}
-            <FontAwesome name='thumbs-o-up' size='lg'/>
+            <FontAwesome name='thumbs-o-up'/>
           </div>
           <div className={s.statBL}>
             {sharePercentage} {'%'}
           </div>
-        </div>
       </div>
     )
   }

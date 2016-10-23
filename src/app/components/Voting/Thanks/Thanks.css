@@ -1,8 +1,8 @@
 .root {
     position: absolute;
-    bottom: 2vh;
-    right: 5vw;
-    width: 80vw;
+    bottom: 6vh;
+    right: 4vw;
+    width: 88vw;
     z-index: 500;
 }
 
@@ -33,9 +33,7 @@
 
 .thanks {
     composes: family-base from '../../styling/typography.css';
-
-    font-size: 1.6em;
-    letter-spacing: 0.07em;
+    composes: size-base from '../../styling/typography.css';
 }
 
 .link {

@@ -5,21 +5,21 @@
     background-color: white;
     border-radius: 4px;
     cursor: pointer;
-    display: inline-block;
-    height: 9vh;
-    margin-bottom: 0.6vh;
+    display: block;
     overflow: hidden;
     text-align: center;
     width: 100%;
+    height: 100%;
 }
 
 .row-effect:hover {
-    color: #ed7303;
     transform: scale(1.02);
+    cursor: pointer;
 }
 
 .row {
     composes: baseBlock row-effect;
+    color: #ed7303;
 }
 
 .chosen-effect:hover {
@@ -44,12 +44,9 @@
 
 .header {
     composes: family-base from '../../styling/typography.css';
+    composes: size-base from '../../styling/typography.css';
 
-    padding: 1%;
-    font-size: 1.4em;
-    letter-spacing: 0.13em;
-
+    padding: .8em;
     overflow: hidden;
     text-transform: uppercase;
 }
-

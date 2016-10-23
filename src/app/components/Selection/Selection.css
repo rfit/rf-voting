@@ -1,18 +1,38 @@
 .root {
-    margin-bottom: 5vh;
-    height: 70vh;
+    margin-bottom: 13em;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5em;
 }
 
 .left {
-    width: 60%;
-    display: inline-block;
+    flex: 2;
     vertical-align: text-top;
     text-align: center;
 }
 
 .right {
-    width: 37%;
-    display: inline-block;
+    flex: 1;
+    display: block;
     vertical-align: text-top;
     text-align: center;
+}
+
+.hideRight {
+    flex: 0;
+    display: none;
+}
+
+@media all  and (min-width: 31.25em){
+    .root > div {
+        flex-direction: row;
+    }
+
+    .root > div > span {
+        margin: 0 auto;
+        height: 4.6em;
+    }
 }

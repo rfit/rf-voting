@@ -23,15 +23,15 @@ export default class Vote extends React.Component {
 
     return (
       <div className={s.root}>
-        <div className={s.left}>
-          <Submit selectionIsValid={hasSelectedThree} hasVoted={hasVoted} hasLoggedIn={hasLoggedIn} validClickHandler={onValidClick} />
+          <div className={s.wrapper}>
+            <div className={s.left}>
+              <Submit selectionIsValid={hasSelectedThree} hasVoted={hasVoted} hasLoggedIn={hasLoggedIn} validClickHandler={onValidClick} />
+            </div>
+            <div className={s.right}>
+              <Login hasLoggedIn={hasLoggedIn} hasVoted={hasVoted} username={fbName} picture={fbPictureSrc} onUserLogin={userLoggedInAsync} />
+            </div>
+            <Thanks isShown={hasVoted && thanksOpen} closeHandler={toggleThanks} />
         </div>
-        <div className={s.right}>
-          <Login hasLoggedIn={hasLoggedIn} hasVoted={hasVoted} username={fbName} picture={fbPictureSrc} onUserLogin={userLoggedInAsync} />
-        </div>
-        <span className={s.relative}>
-          <Thanks isShown={hasVoted && thanksOpen} closeHandler={toggleThanks} />
-        </span>
       </div>
     )
   }
