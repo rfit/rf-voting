@@ -28,10 +28,6 @@
     margin-top: 1em;
 }
 
-.relative {
-    position: relative;
-}
-
 @media all  and (min-width: 31em) {
     .wrapper {
         flex-direction: row;

@@ -46,7 +46,7 @@
     composes: family-base from '../../styling/typography.css';
     composes: size-base from '../../styling/typography.css';
 
-    padding: 1em;
+    padding: .8em;
     overflow: hidden;
     text-transform: uppercase;
 }

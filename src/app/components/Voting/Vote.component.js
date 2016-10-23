@@ -30,9 +30,7 @@ export default class Vote extends React.Component {
             <div className={s.right}>
               <Login hasLoggedIn={hasLoggedIn} hasVoted={hasVoted} username={fbName} picture={fbPictureSrc} onUserLogin={userLoggedInAsync} />
             </div>
-            <span className={s.relative}>
-              <Thanks isShown={hasVoted && thanksOpen} closeHandler={toggleThanks} />
-            </span>
+            <Thanks isShown={hasVoted && thanksOpen} closeHandler={toggleThanks} />
         </div>
       </div>
     )

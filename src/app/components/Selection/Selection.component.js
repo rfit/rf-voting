@@ -1,7 +1,6 @@
 import React from 'react'
 import Block from './Block/Block.component'
 import Stats from './Stats/Stats.component'
-import ToggleDisplay from 'react-toggle-display';
 
 import s from './Selection.css'
 
@@ -14,23 +13,20 @@ export default class Selection extends React.Component {
     let { items, selectedItems, share, totals } = this.props
     let { hasVoted, showStats, shareMultiplier } = this.props
     let { selectProject } = this.props
+
     return (
       <div className={s.root}>
         {
           items.map((project) => {
             let { id, name } = project
             return (
-              <div key={id}>
+              <div key={id} className={s.project}>
                 <div className={s.left}>
-                  <Block label={name} isSelected={selectedItems.includes(id)}
-                         clickHandler={(e) => !hasVoted && selectProject(id)}/>
+                  <Block label={name} isSelected={selectedItems.includes(id)} clickHandler={(e) => !hasVoted && selectProject(id)}/>
                 </div>
-                <ToggleDisplay show={showStats}>
-                  <div className={s.right}>
-                    <Stats shareMultiplier={shareMultiplier} share={share[id]} total={totals[id]}>
-                    </Stats>
-                  </div>
-                </ToggleDisplay>
+                <div className={showStats ? s.right : s.hideRight}>
+                  <Stats shareMultiplier={shareMultiplier} share={share[id]} total={totals[id]} />
+                </div>
               </div>
             )
           })

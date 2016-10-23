@@ -9,10 +9,6 @@
     overflow: hidden;
 }
 
-.flex {
-    height: 100%;
-}
-
 .stat {
     composes: family-base size-base from '../../styling/typography.css';
 
@@ -30,15 +26,15 @@
 .statTL {
     composes: stat stat-effect;
 
-    left: 1vw;
-    top: 1vh;
+    left: 0.4em;
+    top: 0.15em;
 }
 
 .statBL {
     composes: stat stat-effect;
 
-    left: 1vw;
-    bottom: 1vh;
+    left: 0.4em;
+    bottom: 0.15em;
 }
 
 .share {

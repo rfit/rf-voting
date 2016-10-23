@@ -1,8 +1,8 @@
 .root {
     position: absolute;
-    bottom: 2vh;
-    right: 5vw;
-    width: 80vw;
+    bottom: 6vh;
+    right: 4vw;
+    width: 88vw;
     z-index: 500;
 }
 

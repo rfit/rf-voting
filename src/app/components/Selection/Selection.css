@@ -2,30 +2,28 @@
     margin-bottom: 13em;
 }
 
-.root > div {
+.project {
     display: flex;
     flex-direction: column;
     margin-bottom: 0.5em;
 }
 
-.root > div > span {
-    display: block;
-    flex: 1;
-    height: 4em;
-    margin: 0.4em 0;
-}
-
 .left {
-    flex: 1;
+    flex: 2;
     vertical-align: text-top;
     text-align: center;
 }
 
 .right {
+    flex: 1;
     display: block;
     vertical-align: text-top;
     text-align: center;
-    height: 100%;
+}
+
+.hideRight {
+    flex: 0;
+    display: none;
 }
 
 @media all  and (min-width: 31.25em){
