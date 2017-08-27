@@ -7,7 +7,7 @@ import s from './Login.css'
 
 export default class Login extends React.Component {
   render() {
-    let appId = '127383827888719'
+    let appId = '698595986992783' // Dev: 698595986992783, Prod: 127383827888719
     let { hasVoted, hasLoggedIn, username, picture, onUserLogin } = this.props
 
     let firstName = username.split(' ')[0]
