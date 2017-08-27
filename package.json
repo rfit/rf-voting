@@ -27,7 +27,7 @@
     "bluebird": "^3.4.6",
     "browser-sync": "^2.15.0",
     "config": "1.21.0",
-    "cross-env": "^2.0.1",
+    "cross-env": "^5.0.5",
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "isomorphic-fetch": "2.2.1",
@@ -72,7 +72,7 @@
     "eslint-plugin-standard": "^2.0.0",
     "node-sass": "^3.9.3",
     "nodemon": "^1.10.0",
-    "parallelshell": "^2.0.0",
+    "parallelshell": "^3.0.1",
     "sass-loader": "^4.0.2",
     "webpack": "^1.13.1"
   },
