@@ -4,6 +4,7 @@
     right: 4vw;
     width: 88vw;
     z-index: 500;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .base {
@@ -34,6 +35,7 @@
 .thanks {
     composes: family-base from '../../styling/typography.css';
     composes: size-base from '../../styling/typography.css';
+
 }
 
 .link {
