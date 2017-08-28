@@ -44,7 +44,10 @@
     margin-left: .5em;
     vertical-align: middle;
     border-radius: 50%;
+    height: 48px;
+    width: 48px;
     transform: scale(1.05);
+
 }
 
 .base i { /* Matches FA icon */
