@@ -1,38 +1,53 @@
 html {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: auto;
     font-family: "rf4000", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
     text-rendering: optimizeLegibility;
     background: #2e2e2e;
+    background: -moz-radial-gradient(center, ellipse cover, rgba(92,92,92,1) 0%, rgba(42,42,42,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(92,92,92,1)), color-stop(100%, rgba(42,42,42,1))); /* safari4+,chrome */
+    background:-webkit-radial-gradient(center, ellipse cover, rgba(92,92,92,1) 0%, rgba(42,42,42,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(92,92,92,1) 0%, rgba(42,42,42,1) 100%); /* opera 11.10+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(92,92,92,1) 0%, rgba(42,42,42,1) 100%); /* ie10+ */
+    background:radial-gradient(ellipse at center, rgba(92,92,92,1) 0%, rgba(42,42,42,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5C5C5C', endColorstr='#2E2E2E',GradientType=1 ); /* ie6-9 */
     font-size: 16px;
+}
+* {
+  box-sizing: border-box;
 }
 
 @media screen {
     body {
-        margin: 1vw;
+        /*margin: 1vw;*/
+        margin: 12px;
     }
 }
 
 @media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
     body {
-        margin: 1vw;
+        /*margin: 1vw;*/
     }
 }
 
 
 @media screen and (min-device-height: 667px) and (min-device-width: 375px) {
     body {
-        margin: 1vw;
+        /*margin: 1vw;*/
     }
 }
 
 @media screen and (min-width: 1024px){
     body {
-        margin: 2vw;
+        /*margin: 2vw;*/
     }
 }
 
 .root {
     width: 100%;
-    max-width: 45em;
+    /*max-width: 45em;*/
+    max-width: 768px;
     margin: 0 auto;
     position: relative; /* For thanks comp */
 }
