@@ -1,31 +1,27 @@
 [
   {
-    "name": "International Work Group for Indigenous Affairs (IWGIA)",
-    "id": "iwgia"
+    "name": "Sabaah",
+    "id": "sabaah"
   },
   {
-    "name": "Agricultural Development Denmark Asia (ADDA)",
-    "id": "adda"
+    "name": "Kvindelige Veteraner",
+    "id": "kv"
   },
   {
-    "name": "Din Nødhjælp",
-    "id": "din"
+    "name": "Ventilen",
+    "id": "ventilen"
   },
   {
-    "name": "Festivalen Noget Bedre",
-    "id": "nogetbedre"
+    "name": "Hotel City Plaza",
+    "id": "plaza"
   },
   {
-    "name": "KIRON Open Higher Education",
-    "id": "kiron"
+    "name": "Hellebro",
+    "id": "hellebro"
   },
   {
-    "name": "Fonden Safe and Alive",
-    "id": "safeandalive"
-  },
-  {
-    "name": "Gadens Stemmer",
-    "id": "gadensstemmer"
+    "name": "Asylum United",
+    "id": "au"
   }
 ]
 
