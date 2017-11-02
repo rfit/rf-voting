@@ -1,6 +1,6 @@
 html {
-    min-width: 100vw;
-    min-height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
     overflow: auto;
     font-family: "rf4000", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
     text-rendering: optimizeLegibility;
@@ -43,7 +43,12 @@ html {
         /*margin: 2vw;*/
     }
 }
-
+@media screen and (max-width: 450px){
+  body {
+    margin: 4px;
+    font-size: 14px;
+  }
+}
 .root {
     width: 100%;
     /*max-width: 45em;*/

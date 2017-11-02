@@ -39,7 +39,9 @@
     justify-content: center;
     width: 98%;
 }
-
+.text div {
+  text-align: left;
+}
 .pic {
     margin-left: .5em;
     vertical-align: middle;

@@ -10,6 +10,7 @@
     width: 100%;
     z-index: 100;
     color: rgba(0,0,0,0.82);
+
 }
 
 
@@ -42,4 +43,15 @@
         margin-top: 0;
         margin-left: 1em;
     }
+    .root {
+      font-size: 13px
+  }
+}
+@media screen and (max-width: 425px) {
+  .root {
+    padding: 4px;
+  }
+  .right {
+     margin-top: 8px;
+  }
 }
