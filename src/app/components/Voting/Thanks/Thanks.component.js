@@ -16,14 +16,10 @@ export default class Thanks extends React.Component {
             </div>
             <div className={s.thanks}>
               <p>
-                We appreciate your time and thoughts, on making a difference.
+                Thank you for voting!
               </p>
               <p>
-                You can read more about {' '}
-                <a className={s.link} href="http://www.roskilde-festival.dk/news/2016/who-do-you-think-should-receive-a-donation">
-                  Your Donations right here
-                </a>
-                , and make sure to have your say next year!
+                We appreciate your time and thoughts, on making a difference.
                 <span className={s.nonprofit}>
                   <img src='RF16_NON_PROFIT_logo_canopy_orange_RGB_150915.png' />
                 </span>
