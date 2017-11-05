@@ -46,6 +46,16 @@
     .text div {
       text-align: left;
   }
+  .pic {
+      padding-left: .3em;
+/*For now we're going to have to accept some overflow of the profile picture.   */
+      vertical-align: middle;
+      border-radius: 50%;
+      height: 36px;
+      width: 36px;
+      transform: scale(1.05);
+
+  }
 }
 .pic {
     margin-left: .5em;

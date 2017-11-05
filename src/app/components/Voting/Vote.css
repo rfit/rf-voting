@@ -55,9 +55,14 @@
     flex-direction: row;
   }
   .left, .right {
-    width: 49%;
     margin: 4px;
   }
   .right {
+    flex-grow: 2;
+    /*width: 66%;*/
+  }
+  .left {
+    flex-grow: 1;
+    /*width: 33%;*/
   }
 }
