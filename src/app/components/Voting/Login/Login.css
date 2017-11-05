@@ -37,10 +37,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 98%;
+    /*width: 98%;*/ /*Not sure why it was 98% in the first place, changed to
+                    100% for better mobile performance */
+    width: 100%;
+    font-size: 1rem;
 }
-.text div {
-  text-align: left;
+@media screen and (max-width: 450px){
+    .text div {
+      text-align: left;
+  }
 }
 .pic {
     margin-left: .5em;

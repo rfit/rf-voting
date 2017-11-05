@@ -31,3 +31,8 @@
         font-size: 1.5rem;
     }
 }
+@media screen and (max-width: 450px) {
+  .size-base {
+    font-style: 1.1rem;
+  }
+}

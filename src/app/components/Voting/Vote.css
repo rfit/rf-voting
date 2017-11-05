@@ -3,7 +3,7 @@
     bottom: 0;
     /*background: rgba(161, 78, 2, 0.9);*/
     background-color: #ed7303;
-    background-color: rgba(237, 115, 4, 0.82);
+    background-color: rgba(237, 115, 4, 0.78);
     /*padding: 1em 0;*/
     padding: 12px 8px 12px 8px;
     left: 0;
@@ -51,7 +51,13 @@
   .root {
     padding: 4px;
   }
+  .wrapper {
+    flex-direction: row;
+  }
+  .left, .right {
+    width: 49%;
+    margin: 4px;
+  }
   .right {
-     margin-top: 8px;
   }
 }
