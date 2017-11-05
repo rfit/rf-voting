@@ -59,6 +59,7 @@
   }
   .right {
     flex-grow: 2;
+    max-width: 57%;
     /*width: 66%;*/
   }
   .left {
