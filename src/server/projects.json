@@ -1,28 +1,16 @@
 [
   {
-    "name": "Sabaah",
-    "id": "sabaah"
+    "name": "Projektet Student Refugees",
+    "id": "student"
   },
   {
-    "name": "Kvindelige Veteraner",
-    "id": "kv"
+    "name": "Foreningen Cirkus Tværs",
+    "id": "cirkus"
   },
   {
-    "name": "Ventilen",
-    "id": "ventilen"
+    "name": "Environmental Justice Foundation",
+    "id": "environmental"
   },
-  {
-    "name": "Hotel City Plaza",
-    "id": "plaza"
-  },
-  {
-    "name": "Hellebro",
-    "id": "hellebro"
-  },
-  {
-    "name": "Asylum United",
-    "id": "au"
-  }
 ]
 
 
