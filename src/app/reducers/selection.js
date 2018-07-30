@@ -4,8 +4,8 @@ function resultingSelectedItems(state, itemId) { // Toggle selected projects emu
   let selectedItems = []
   const indexSelected = state.selectedItems.indexOf(itemId)
   if (indexSelected < 0) { // id not currently selected
-    if (state.selectedItems.length === 3) { // we make room if necessary
-      selectedItems = state.selectedItems.slice(0, 2) // Pop stack (the result of)
+    if (state.selectedItems.length === 1) { // we make room if necessary
+      selectedItems = state.selectedItems.slice(0, 0) // Pop stack (the result of)
       selectedItems.push(itemId) // Push onto stack
     } else {
       selectedItems = state.selectedItems.concat(itemId)  // Push onto stack (concat since we directly copy of state)

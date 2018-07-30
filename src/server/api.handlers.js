@@ -10,10 +10,11 @@ function isValidFbResponse(fbResponse) {
 }
 
 function isValidItems(items) {
-  let itemIdsExist = items.every((itemId) => {
-    return projectSet.some((project) => project.id === itemId)
-  })
-  return itemIdsExist && items.length === 3
+  return projectSet.some(project => project.id === items[0])
+  /*   let itemIdsExist = items.every((itemId) => {
+      return projectSet.some((project) => project.id === itemId)
+    })
+    return itemIdsExist && items.length === 3 */
 }
 
 const VoteTally = require('./models/VoteTally')
@@ -33,7 +34,10 @@ let testUser1Body = {
 }
 function getValidBody(body) {
   let parsedBody = JSON.parse(body)
+  console.log("Parsed body", parsedBody.items)
   let bodyIsValid = isValidItems(parsedBody['items']) && isValidFbResponse(parsedBody['fbResponse'])
+  console.log("Is valid ", isValidItems(parsedBody['items']))
+  console.log("Is valid ", isValidFbResponse(parsedBody['fbResponse']))
 
   if (bodyIsValid)
     return parsedBody
@@ -51,9 +55,10 @@ function getValidBody(body) {
 function makeNewVote(items, fbResponse) {
   return {
     userID: fbResponse.userID,
-    item1: items[0],
-    item2: items[1],
-    item3: items[2],
+    /*     item1: items[0],
+        item2: items[1],
+        item3: items[2], */
+    item: items[0],
     location: 'dummy',
     created_at: new Date(),
     meta: {
@@ -80,6 +85,7 @@ module.exports.voteHandler = function* () {
   let validBody = getValidBody(this.body)
   if (validBody) {
     let items = validBody['items']
+    console.log(items)
     let fbResponse = validBody['fbResponse']
     let user = yield Vote.findOneAsync({ userID: fbResponse.userID })
     if (!user) {
@@ -92,13 +98,13 @@ module.exports.voteHandler = function* () {
     if (!user || require('config').get('allowMultipleVotes')) { // TODO document
       console.log(sprintf('*** Will vote as %s and update update tallys on %s [allowMultipleVotes: %s]', fbResponse.name, items, require('config').get('allowMultipleVotes')))
       let t1 = yield VoteTally.findOneAsync({ itemId: items[0] })
-      let t2 = yield VoteTally.findOneAsync({ itemId: items[1] })
-      let t3 = yield VoteTally.findOneAsync({ itemId: items[2] })
+      /*       let t2 = yield VoteTally.findOneAsync({ itemId: items[1] })
+            let t3 = yield VoteTally.findOneAsync({ itemId: items[2] }) */
       yield VoteTally.findByIdAndUpdateAsync(t1._id, { $inc: { totalVotes: 1 } }, { 'new': true }),
-        yield VoteTally.findByIdAndUpdateAsync(t2._id, { $inc: { totalVotes: 1 } }, { 'new': true }),
-        yield VoteTally.findByIdAndUpdateAsync(t3._id, { $inc: { totalVotes: 1 } }, { 'new': true })
+        /*       yield VoteTally.findByIdAndUpdateAsync(t2._id, { $inc: { totalVotes: 1 } }, { 'new': true }),
+              yield VoteTally.findByIdAndUpdateAsync(t3._id, { $inc: { totalVotes: 1 } }, { 'new': true }) */
 
-      yield VoteTally.updateShareOfVote()
+        yield VoteTally.updateShareOfVote()
     }
 
     let stats = yield getStats()
@@ -130,7 +136,8 @@ module.exports.loginHandler = function* () {
       msg: 'Success',
       share: stats.share,
       totals: stats.totals,
-      selectedItems: [user.item1, user.item2, user.item3]
+      /* selectedItems: [user.item1, user.item2, user.item3] */
+      selectedItems: [user.item]
     }
   }
 }
