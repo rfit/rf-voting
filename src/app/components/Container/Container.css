@@ -50,9 +50,49 @@ html {
   }
 }
 .root {
+    position: relative; /* For thanks comp */
     width: 100%;
-    /*max-width: 45em;*/
     max-width: 768px;
     margin: 0 auto;
-    position: relative; /* For thanks comp */
+}
+h1 {
+    color: #ed7303;
+    word-break: break-all;
+}
+h2 {
+    color: #ed7303;
+    padding-left: 8px;
+    margin-bottom: 0.415em;
+}
+.infoContainer { 
+    background: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    border: 4px solid black;
+
+    composes: family-base from '../styling/typography.css';
+    composes: size-base from '../styling/typography.css';
+    
+}
+.infoContainer img {
+    width: 100%;
+    border-radius: 4px;
+    height: auto;
+    margin: auto auto;
+    max-height: 66vh;
+}
+.voteContainer {
+    composes: family-base from '../styling/typography.css';
+    composes: size-base from '../styling/typography.css';
+    padding: 8px;
+    
+}
+.voteContainer h1 {
+    text-align: center;
+}
+.title2 { 
+
+}
+.voteFor {
+    margin-bottom: 2.4em;
 }

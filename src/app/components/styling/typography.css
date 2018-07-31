@@ -3,7 +3,7 @@
 }
 
 .size-base {
-    font-size: 1.2rem;
+    font-size: 1rem;
     letter-spacing: 0.06em;
 }
 
@@ -22,17 +22,17 @@
 
 @media all and (min-width: 28.75em) {
     .size-base {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
 }
 
 @media all and (min-width: 46.25em) {
     .size-base {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 }
 @media screen and (max-width: 450px) {
   .size-base {
-    font-style: 1.1rem;
+    font-style: 1rem;
   }
 }
