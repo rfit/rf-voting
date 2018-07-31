@@ -15,22 +15,23 @@ export default class Vote extends React.Component {
     let { selectedItems, fbResponse, hasVoted, hasLoggedIn, fbName, fbPictureSrc, thanksOpen } = this.props
     let { submitVoteAsync, userLoggedInAsync, toggleThanks } = this.props
 
-    let hasSelectedThree = selectedItems.length === 3
-    let canVote = hasSelectedThree && !hasVoted && hasLoggedIn
+    /* let hasSelectedThree = selectedItems.length === 3 */
+    let hasSelectedOne = selectedItems.length === 1
+    let canVote = hasSelectedOne && !hasVoted && hasLoggedIn
 
-    let validClickBeforeVoting = () => {canVote && submitVoteAsync(selectedItems, fbResponse)}
+    let validClickBeforeVoting = () => { canVote && submitVoteAsync(selectedItems, fbResponse) }
     let onValidClick = hasVoted ? toggleThanks : validClickBeforeVoting
 
     return (
       <div className={s.root}>
-          <div className={s.wrapper}>
-            <div className={s.left}>
-              <Submit selectionIsValid={hasSelectedThree} hasVoted={hasVoted} hasLoggedIn={hasLoggedIn} validClickHandler={onValidClick} />
-            </div>
-            <div className={s.right}>
-              <Login hasLoggedIn={hasLoggedIn} hasVoted={hasVoted} username={fbName} picture={fbPictureSrc} onUserLogin={userLoggedInAsync} />
-            </div>
-            <Thanks isShown={hasVoted && thanksOpen} closeHandler={toggleThanks} />
+        <div className={s.wrapper}>
+          <div className={s.left}>
+            <Submit selectionIsValid={hasSelectedOne} hasVoted={hasVoted} hasLoggedIn={hasLoggedIn} validClickHandler={onValidClick} />
+          </div>
+          <div className={s.right}>
+            <Login hasLoggedIn={hasLoggedIn} hasVoted={hasVoted} username={fbName} picture={fbPictureSrc} onUserLogin={userLoggedInAsync} />
+          </div>
+          <Thanks isShown={hasVoted && thanksOpen} closeHandler={toggleThanks} />
         </div>
       </div>
     )
