@@ -51,7 +51,7 @@ export class Container extends React.Component {
           <img src='studRef2.jpg' />
           <p className={s.voteFor}>
             <i>
-              Stem på Projektet Student Refugees
+              Stem på Student Refugees nederst på siden
             </i>
           </p>
 
@@ -65,15 +65,17 @@ export class Container extends React.Component {
           <img src='cirkus1.jpeg' />
           <img src='cirkus2.jpeg' />
           <p>Se mere på:
-          <a href={t3para6}>vores hjemmeside </a>
+          <a href={t3para6}> vores hjemmeside </a>
           eller 
-          <a href={t3para7}>YouTube</a>
+          <a href={t3para7}> YouTube</a>
           </p>
-          <p className={s.voteFor}><i>Stem på Foreningen Cirkus Tværs</i></p>
+          <p className={s.voteFor}><i>Stem på Foreningen Cirkus Tværs nederst på siden</i></p>
 
-          <h2>{t4}</h2>
-          <p>{t4para1}</p>
-          <p className={s.voteFor}><i>{t4para2}</i></p>
+          <h2>Environmental Justice Foundation – a greener world</h2>
+          <p>Environmental Justice Foundation work to Protect People and Planet. We investigate, expose and campaign to end threats to the global environment, people and wildlife. We train young grassroots environmental and human rights defenders, helping them give voice to those suffering from environmental injustice: the poorest, most marginalised and vulnerable people on our planet.  Our investigations and campaigns to end illegal, unsustainable and unethical practices behind the production of everyday goods such as cotton and seafood have brought innovation, transparency and traceability to supply chains and an end to severe environmental and human rights abuses.  </p>
+          <p>Our ‘No Place Like Home’ climate justice campaign is calling for legal protection for climate refugees - the millions of people who have contributed least to climate change, but who are feeling the first and worst effects of a warming world. We campaign for truly sustainable, renewable, community-owned energy that bring benefits to the environment and to people. </p>
+          <img src='env1.png' />
+          <p className={s.voteFor}><i>Stem på Environmental Justice Foundation nederst på siden</i></p>
         </div>
 
         <div className={s.voteContainer}>
