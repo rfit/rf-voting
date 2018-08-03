@@ -42,7 +42,7 @@ export class Container extends React.Component {
             Student Refugees er et studenterdrevet projekt, som har til formål at støtte personer med flygtningebaggrund i at søge ind på videregående uddannelser i Danmark, og at støtte dem efter de er blevet optaget. Vi ønsker at give alle uanset baggrund lige muligheder for at få en uddannelse i Danmark enten ved at starte på en ny uddannelse eller få muligheden for at fortsætte uddannelsen fra hjemlandet. Det danske uddannelses- og optagelsessystem er komplekst. Student Refugees giver et overblik, finder frem til relevante kontaktpersoner i uddannelsessystemet og følger de personer vi hjælper hele vejen igennem, både med praktisk information, men også med moralsk opbakning, hvor vi giver troen på at det er muligt.
           </p>
           <p>
-            Til dem, som bliver optaget på en uddannelse, tilbyder vi en \"buddy\" -  altså en medstuderende, som kan hjælpe dem godt i gang i studiemiljøet og i en dansk uddannelseskontekst. 
+            Til dem, som bliver optaget på en uddannelse, tilbyder vi en "buddy" -  altså en medstuderende, som kan hjælpe dem godt i gang i studiemiljøet og i en dansk uddannelseskontekst. 
           </p>
           <p>
             Vi gør det, både fordi vi ønsker at gøre en forskel for den enkelte, men også for sammen at skabe et samfund, vi kan være stolte af. Vi ønsker at modarbejde et mediebillede af flygtninge, som en belastning for samfundet, da vi ved, der findes mange spildte ressourcer blandt veluddannede flygtninge, som ikke får mulighed for at bruge de kompetencer, de bringer med sig. At være en del af Student Refugees er en helt konkret måde i fællesskab at kunne ændre det billede og få en stemme i samfundsdebatten. 
@@ -59,7 +59,7 @@ export class Container extends React.Component {
             Cirkus Tværs
           </h2>
           <p>
-            CIRKUS TVÆRS i Gellerup,er et socio - kulturelt tilbud til børn og unge. \“All different, all equal\” er vores motto. Gennem cirkus giver vi vores medlemmer forskellige færdigheder både fysiske, psykiske og sociale. Det er gratis at være med og vi har åbent hverdag fra kl. 13-18. Vi træner,laver workshops og optræder.... på tværs af alder, religion, og køn.
+            CIRKUS TVÆRS i Gellerup,er et socio - kulturelt tilbud til børn og unge. “All different, all equal” er vores motto. Gennem cirkus giver vi vores medlemmer forskellige færdigheder både fysiske, psykiske og sociale. Det er gratis at være med og vi har åbent hverdag fra kl. 13-18. Vi træner, laver workshops og optræder.... på tværs af alder, religion, og køn.
           </p>
           <p>Cirkus Tværs arbejder med at fastholde børn og unge i en positiv, kreativ og aktiv hverdag. </p>
           <img src='cirkus1.jpeg' />
