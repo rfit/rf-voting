@@ -61,10 +61,12 @@ h1 {
 }
 h2 {
     color: #ed7303;
-    padding-left: 8px;
+    /* padding-left: 8px; */
     margin-bottom: 0.415em;
 }
 .infoContainer { 
+    width: 100%;
+    max-width: 100%;
     background: white;
     border-radius: 4px;
     padding: 8px 16px;
@@ -76,8 +78,8 @@ h2 {
 }
 .infoContainer img {
     width: 100%;
-    border-radius: 4px;
     height: auto;
+    border-radius: 4px;
     margin: auto auto;
     max-height: 66vh;
 }
