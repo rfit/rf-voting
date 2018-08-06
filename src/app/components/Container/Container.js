@@ -21,10 +21,11 @@ export class Container extends React.Component {
       <div className={s.root}>
         <div className={s.infoContainer}>
           <h1>
-           Tekst til afstemningsside – årsfest
+           Års-afstemning
           </h1>
+          
           <p>
-            Vi fortsætter selvfølgelig traditionen med at uddele en eller flere onationer i forbindelse med Årsfesten og fejringen af årets indsats. Men i år vil vi gerne have dit bidrag til, hvordan puljen på 500.000 kr. skal fordeles. 
+            Vi fortsætter selvfølgelig traditionen med at uddele en eller flere donationer i forbindelse med Årsfesten og fejringen af årets indsats. Men i år vil vi gerne have dit bidrag til, hvordan puljen på 500.000 kr. skal fordeles. 
           </p>
           <p>
             Vi har på forhånd udvalgt tre modtagere, der hver repræsenterer et af de tre indsatsområder som donationsarbejdet har i 2018. Hver af modtagerne får 75.000 kr. som udgangspunkt. De sidste 275.000 kr. kan du være med til at fordele blandt de tre organisationer, ved at fortælle os, hvilken indsats dit hjerte brænder for. 
@@ -38,6 +39,12 @@ export class Container extends React.Component {
           <h2>
             Student Refugees
           </h2>
+          <h3>
+          Unges muligheder, engagement og adfærd i fællesskaber
+          </h3>
+          {/* <p>
+Foreningen Roskilde Festival støtter fællesskabende initiativer, der skaber rum og mulighed for at unge får og tager ordet. Det handler om at give unge en stemme og mulighed for at udtrykke sig.
+          </p> */}
           <p>
             Student Refugees er et studenterdrevet projekt, som har til formål at støtte personer med flygtningebaggrund i at søge ind på videregående uddannelser i Danmark, og at støtte dem efter de er blevet optaget. Vi ønsker at give alle uanset baggrund lige muligheder for at få en uddannelse i Danmark enten ved at starte på en ny uddannelse eller få muligheden for at fortsætte uddannelsen fra hjemlandet. Det danske uddannelses- og optagelsessystem er komplekst. Student Refugees giver et overblik, finder frem til relevante kontaktpersoner i uddannelsessystemet og følger de personer vi hjælper hele vejen igennem, både med praktisk information, men også med moralsk opbakning, hvor vi giver troen på at det er muligt.
           </p>
@@ -58,6 +65,12 @@ export class Container extends React.Component {
           <h2>
             Cirkus Tværs
           </h2>
+          <h3>
+          Kunst og fællesskab
+          </h3>
+          {/* <p>
+Foreningen Roskilde Festival støtter udvikling af ny musik, kunst og kultur og har også fokus på innovation og nyskabende initiativer indenfor kulturområdet, der kan være med til udvikle og fremme kunst og kulturliv samt rammevilkårene for disse.
+          </p> */}
           <p>
             CIRKUS TVÆRS i Gellerup,er et socio - kulturelt tilbud til børn og unge. “All different, all equal” er vores motto. Gennem cirkus giver vi vores medlemmer forskellige færdigheder både fysiske, psykiske og sociale. Det er gratis at være med og vi har åbent hverdag fra kl. 13-18. Vi træner, laver workshops og optræder.... på tværs af alder, religion, og køn.
           </p>
@@ -72,6 +85,12 @@ export class Container extends React.Component {
           <p className={s.voteFor}><i>Stem på Foreningen Cirkus Tværs nederst på siden</i></p>
 
           <h2>Environmental Justice Foundation – a greener world</h2>
+          <h3>
+          Bæredygtige fællesskaber
+          </h3>
+          {/* <p>
+Foreningen Roskilde Festival støtter initiativer, der arbejder med bæredygtighed, miljø og klima, særligt med involvering af børn og unge og baseret på frivillighed, med fokus på hvordan vi i fællesskab kan finde løsningerne for en grønnere verden og et bedre klima for kommende generationer.
+          </p> */}
           <p>Environmental Justice Foundation work to Protect People and Planet. We investigate, expose and campaign to end threats to the global environment, people and wildlife. We train young grassroots environmental and human rights defenders, helping them give voice to those suffering from environmental injustice: the poorest, most marginalised and vulnerable people on our planet.  Our investigations and campaigns to end illegal, unsustainable and unethical practices behind the production of everyday goods such as cotton and seafood have brought innovation, transparency and traceability to supply chains and an end to severe environmental and human rights abuses.  </p>
           <p>Our ‘No Place Like Home’ climate justice campaign is calling for legal protection for climate refugees - the millions of people who have contributed least to climate change, but who are feeling the first and worst effects of a warming world. We campaign for truly sustainable, renewable, community-owned energy that bring benefits to the environment and to people. </p>
           <img src='env1.png' />
